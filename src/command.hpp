@@ -20,7 +20,7 @@ private:
     hwlib::pin_out &chipSelect;
 
     /**
-     * Variables used in .cc names represents their functionality.
+     * Variables used in .cpp names represents their functionality.
      */
     int numberOfMatrices;
     int numberOfRows;
@@ -29,7 +29,7 @@ private:
     int numberOfCommands = 5;
 
     /**
-    * Matrices used in .cc names represents their functionality.
+    * Matrices used in .cpp names represents their functionality.
     */
     uint8_t processedCommands[1000];
     uint8_t converterOutput[8][2];

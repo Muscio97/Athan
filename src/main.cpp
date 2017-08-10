@@ -35,7 +35,7 @@ int main() {
 
     const int numberOfUnusedMatrices = 0;
     const int numberOfMatrices = 12;
-    char charValue[12]= {'1','2','3','4','5','6','7','8', '9', '0', '1', '2'};
+    char charValue[12]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k'};
     Setup matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
     //int i =10000;
     using namespace hwlib;
