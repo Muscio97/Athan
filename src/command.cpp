@@ -51,15 +51,15 @@ void Command::converter(uint8_t (*renderInput)[8], uint8_t (*converterOutput)[2]
 void Command::render(uint8_t (*renderInput)[8]) {
     converter(renderInput, converterOutput);
     for (int i = 0; i < 8; i++) {
-        commands[numberOfWrites][i][1] = converterOutput[i][1];
+        commands[stringLength+numberOfWrites][i][1] = converterOutput[i][1];
     }
     numberOfWrites++;
-	enableShift();
+	enableShiftR();
     if (numberOfWrites == stringLength) {
        // numberOfWrites = 0;
-		if (shiftEnabled)
+		if (shiftEnabledL)
 		{
-			for (int i = 0; i <= stringLength; i++)
+			for (int i = 0; i <= stringLength*2; i++)
 			{
 				commander(commands, i);
 				hwlib::wait_ms(250);
@@ -67,22 +67,37 @@ void Command::render(uint8_t (*renderInput)[8]) {
 			
 			return;
 		}
+		if (shiftEnabledR)
+		{
+			for (int i = stringLength*2; i >= 0; i--)
+			{
+				commander(commands, i);
+				hwlib::wait_ms(250);
+			}
+
+			return;
+		}
 		
-		commander(commands);
+		commander(commands, stringLength);
     }
 }
 
-void Command::enableShift()
+void Command::enableShiftL()
 {
-	shiftEnabled = true;
+	shiftEnabledL = true;
 }
 
-void Command::disableShift()
+void Command::disableShiftL()
 {
-	shiftEnabled = false;
+	shiftEnabledL = false;
 }
 
-bool Command::shiftStatus()
+void Command::enableShiftR()
 {
-	return shiftEnabled;
+	shiftEnabledR = true;
+}
+
+void Command::disableShiftR()
+{
+	shiftEnabledR = false;
 }

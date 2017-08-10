@@ -18,9 +18,9 @@ int main() {
     target::pin_out clock(target::pins::d6);
     hwlib::spi_bus_bit_banged_sclk_mosi_miso spi(clock, digitalIn, hwlib::pin_in_dummy);
 
-    const int numberOfMatrices = 16;
+    const int numberOfMatrices = 100;
     //char charValue[16]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k', 'a', 'b', 'c', 'd'};
-	char charValue[17] = "hello world!";
+	char charValue[100] = "1234567890shdfkabfksdbfhacbs,,hdbakhvakdshvbckhvdaskhfbvbccbkjbdskhabvksdbva.kbdkjbvkjdsbjk";
     Display matrix(spi, chipSelect, numberOfMatrices);
 
     using namespace hwlib;

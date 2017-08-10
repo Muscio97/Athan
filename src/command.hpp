@@ -30,7 +30,9 @@ private:
 	* Effects
 	*/
 	
-	bool shiftEnabled = false;
+	bool shiftEnabledL = false;
+
+	bool shiftEnabledR = false;
 
     /**
     * Matrices used in .cpp names represents their functionality.
@@ -91,10 +93,10 @@ public:
      */
     void render(uint8_t (*renderInput)[8]);
 	
-	void enableShift();
-	void disableShift();
-	bool shiftStatus();
-
+	void enableShiftL();
+	void disableShiftL();
+	void enableShiftR();
+	void disableShiftR();
 };
 
 

@@ -103,7 +103,7 @@ public:
      * The number of displayed chars on the this display is limited by the number of matrices
      * \param inputString String that is displayed on the led matrix.
      */
-    void operate(char* inputString);
+    void operate(const char* inputString);
 	
-	Display & operator<< (char* rhs);
+	Display & operator<< (const char* rhs);
 };
