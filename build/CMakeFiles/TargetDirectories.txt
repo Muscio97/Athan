@@ -1,9 +1,0 @@
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/rebuild_cache.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/flash.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/gas.hex.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/gas.elf.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/gas.bin.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/CMakeFiles/edit_cache.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/mustore/CMakeFiles/mustore.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/mustore/CMakeFiles/edit_cache.dir
-C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/build/mustore/CMakeFiles/rebuild_cache.dir
