@@ -3,26 +3,11 @@
  */
 #include "hwlib.hpp"
 #include "display.hpp"
-#include <cstdio>
-
 /**
  * \brief Casts int value of maximum 3 numbers to characters,
  *		  The characters are stored in the second parameter
  *		  mq5Char.
  */
-void convertToChar(int toConvert, char converted[8]);
-
-void convertToChar(int toConvert, char converted[8]) {
-    converted[0] = ((char) (toConvert / 100000000 % 10) + '0');
-    converted[1] = ((char) (toConvert % 10000000 / 1000000) + '0');
-    converted[2] = ((char) (toConvert % 1000000 / 100000) + '0');
-    converted[3] = ((char) (toConvert % 100000 / 10000) + '0');
-    converted[0] = ((char) (toConvert % 10000 / 1000) + '0');
-    converted[1] = ((char) (toConvert % 1000 / 100) + '0');
-    converted[2] = ((char) (toConvert % 100 / 10) + '0');
-    converted[3] = ((char) (toConvert % 10) + '0');
-}
-
 int main() {
     namespace target = hwlib::target;
 
@@ -33,16 +18,31 @@ int main() {
     target::pin_out clock(target::pins::d6);
     hwlib::spi_bus_bit_banged_sclk_mosi_miso spi(clock, digitalIn, hwlib::pin_in_dummy);
 
-    const int numberOfUnusedMatrices = 0;
     const int numberOfMatrices = 16;
-    char charValue[16]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k', 'a', 'b', 'c', 'd'};
-    Display matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
-    //int i =10000;
+    //char charValue[16]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k', 'a', 'b', 'c', 'd'};
+	char charValue[17] = "hello world!";
+    Display matrix(spi, chipSelect, numberOfMatrices);
+
     using namespace hwlib;
 
-   // sprintf(charValue, "%d", i);
-
-    matrix.operate(charValue);
+	matrix << charValue;
+	/**matrix << charValue;
+	
+	displayString text;
+	
+	text.setValue("Hallo");
+	text << "hallo";
+	
+	text.setBold();
+	text.enableSwiftEffect();
+	text.setStartx(10);
+	
+	// In matrix class
+	text.getOptions();**/
+	
+	//matrix << text;
+	
+	
 
     return 0;
 }

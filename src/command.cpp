@@ -6,30 +6,31 @@
 
 #include "command.hpp"
 
-void Command::commander(uint8_t (*commands)[8][2]) {
-    for (int j = 0; j <= numberOfRows; j++) {
-        int l = 0;
-        for (int k = 0; k < numberOfMatrices; k++) {
-            processedCommands[l] = {(uint8_t) j};
-            l++;
-            processedCommands[l] = {commands[k][j - 1][1]};
-            l++;
-        }
+void Command::commander(uint8_t (*commands)[8][2], int offset) {
+		for (int j = 0; j <= 8; j++) {
+			int l = 0;
+			for (int k = 0; k < stringLength; k++) {
+				processedCommands[l] = {(uint8_t) j};
+				l++;
+				processedCommands[l] = {commands[k + offset][j - 1][1]};
+				l++;
+			}
 
-        spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * numberOfMatrices), processedCommands, nullptr);
-    }
+			spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * stringLength), processedCommands, nullptr);
+		}
 }
+
 
 void Command::settings(const uint8_t (*settingsList)[2]) {
     for (int i = 0; i < numberOfCommands; i++) {
         int l = 0;
-        for (int k = 0; k < numberOfMatrices; k++) {
+        for (int k = 0; k < stringLength; k++) {
             processedCommands[l] = {settingsList[i][0]};
             l++;
             processedCommands[l] = {settingsList[i][1]};
             l++;
         }
-        spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * numberOfMatrices), processedCommands, nullptr);
+        spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * stringLength), processedCommands, nullptr);
     }
 }
 
@@ -49,13 +50,39 @@ void Command::converter(uint8_t (*renderInput)[8], uint8_t (*converterOutput)[2]
 
 void Command::render(uint8_t (*renderInput)[8]) {
     converter(renderInput, converterOutput);
-    for (int i = 0; i < numberOfRows; i++) {
+    for (int i = 0; i < 8; i++) {
         commands[numberOfWrites][i][1] = converterOutput[i][1];
     }
     numberOfWrites++;
+	enableShift();
     if (numberOfWrites == stringLength) {
-        numberOfWrites = 0;
-        commander(commands);
+       // numberOfWrites = 0;
+		if (shiftEnabled)
+		{
+			for (int i = 0; i <= stringLength; i++)
+			{
+				commander(commands, i);
+				hwlib::wait_ms(250);
+			}
+			
+			return;
+		}
+		
+		commander(commands);
     }
 }
 
+void Command::enableShift()
+{
+	shiftEnabled = true;
+}
+
+void Command::disableShift()
+{
+	shiftEnabled = false;
+}
+
+bool Command::shiftStatus()
+{
+	return shiftEnabled;
+}

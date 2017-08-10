@@ -22,18 +22,22 @@ private:
     /**
      * Variables used in .cpp names represents their functionality.
      */
-    int numberOfMatrices;
-    int numberOfRows;
     int stringLength;
     int numberOfWrites = 0;
-    int numberOfCommands = 5;
+    const int numberOfCommands = 5;
+	
+	/**
+	* Effects
+	*/
+	
+	bool shiftEnabled = false;
 
     /**
     * Matrices used in .cpp names represents their functionality.
     */
     uint8_t processedCommands[1000];
     uint8_t converterOutput[8][2];
-    uint8_t commands[1000][8][2];
+    uint8_t commands[1000][8][2] = {0};
 
     /**
      * \brief This function expects a 3D array. It's a array of matrices.
@@ -43,7 +47,7 @@ private:
      * [3] Data that you want to write to the MAX7219.
      * \param commands Commands you want to send to the MAX7219 chip.
      */
-    void commander(uint8_t (*commands)[8][2]);
+    void commander(uint8_t (*commands)[8][2], int offset = 0);
 
     /**
      * \brief This function converts a 8x8 matrix to a 8x2 matrix.
@@ -66,13 +70,13 @@ public:
      * \param stringLength      Contains length of given string.
      */
 
-    Command(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfMatrices, int numberOfRows,
+    Command(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect,
             int stringLength) :
-            spiBus(spiBus), chipSelect(chipSelect), numberOfMatrices(numberOfMatrices), numberOfRows(numberOfRows),
+            spiBus(spiBus), chipSelect(chipSelect),
             stringLength(stringLength) {};
 
     /**
-     * \brief This function is allot like commander but it sends settings to the MAX7219.
+     * \brief This function is a lot like commander but it sends settings to the MAX7219.
      *
      * [1] Address you want to speak to.
      * [2] Data you want to send.
@@ -86,6 +90,10 @@ public:
      * @param[in] renderInput   Accepts 8x8 matrix.
      */
     void render(uint8_t (*renderInput)[8]);
+	
+	void enableShift();
+	void disableShift();
+	bool shiftStatus();
 
 };
 

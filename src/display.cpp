@@ -1,12 +1,34 @@
 #include <cstring>
 #include "display.hpp"
 
+Display & Display::operator<< (char* rhs)
+{
+	operate(rhs);
+	
+	return *this;
+}
+
 void Display::operate(char *inputString) {
-    int stringLength = std::strlen(inputString) + numberOfUnusedMatrices;
-
-    Command display(spiBus, chipSelect, numberOfMatrices, numberOfRows, stringLength);
+    int stringLength = std::strlen(inputString);
+	
+	if (stringLength > numberOfMatrices)
+	{
+		// We got overflow
+		return;
+	}
+	
+	int numberOfUnusedMatrices = numberOfMatrices - stringLength;
+	
+	if (stringLength < numberOfMatrices)
+	{
+		stringLength = numberOfMatrices;
+	}
+	
+    Command display(spiBus, chipSelect, stringLength);
     display.settings(settings);
-
+	
+	display.enableShift();
+	
     for (int i = 0; i < numberOfUnusedMatrices; i++) {
         display.render(CharSpace);
     }

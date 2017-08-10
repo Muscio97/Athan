@@ -17,7 +17,6 @@ private:
     /**
      * Settings.
      */
-    int numberOfUnusedMatrices;
     int numberOfMatrices;
     int numberOfRows = 8;
 
@@ -91,10 +90,9 @@ public:
     *                                   So the display won't display random stuff because of current leaking.
     * \param numberOfMatrices           Is the number of matrices you have hooked up.
     */
-    Display(hwlib::spi_bus & spiBus, hwlib::pin_out & chipSelect, int numberOfUnusedMatrices, int numberOfMatrices):
+    Display(hwlib::spi_bus & spiBus, hwlib::pin_out & chipSelect, int numberOfMatrices):
             spiBus(spiBus),
             chipSelect(chipSelect),
-            numberOfUnusedMatrices(numberOfUnusedMatrices),
             numberOfMatrices(numberOfMatrices)
     {};
 
@@ -106,4 +104,6 @@ public:
      * \param inputString String that is displayed on the led matrix.
      */
     void operate(char* inputString);
+	
+	Display & operator<< (char* rhs);
 };
