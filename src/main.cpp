@@ -2,7 +2,7 @@
  * \file
  */
 #include "hwlib.hpp"
-#include "setup.hpp"
+#include "display.hpp"
 #include <cstdio>
 
 /**
@@ -34,22 +34,14 @@ int main() {
     hwlib::spi_bus_bit_banged_sclk_mosi_miso spi(clock, digitalIn, hwlib::pin_in_dummy);
 
     const int numberOfUnusedMatrices = 0;
-    const int numberOfMatrices = 12;
-    char charValue[12]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k'};
-    Setup matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
+    const int numberOfMatrices = 16;
+    char charValue[16]= {'1','*','+','+',' ','6','7',' ', '9', '0', '1', 'k', 'a', 'b', 'c', 'd'};
+    Display matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
     //int i =10000;
     using namespace hwlib;
 
    // sprintf(charValue, "%d", i);
 
-    cout << charValue << endl;
-    //while (true) {
-
-        //convertToChar(i++, charValue);
-        //sprintf(charValue, "%d", i++);
-       // matrix.operate(charValue);
-
-//    }
     matrix.operate(charValue);
 
     return 0;

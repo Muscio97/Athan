@@ -1,7 +1,7 @@
 #include <cstring>
-#include "setup.hpp"
+#include "display.hpp"
 
-void Setup::operate(char *inputString) {
+void Display::operate(char *inputString) {
     int stringLength = std::strlen(inputString) + numberOfUnusedMatrices;
 
     Command display(spiBus, chipSelect, numberOfMatrices, numberOfRows, stringLength);

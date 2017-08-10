@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="src" InternalType="">
+<CodeLite_Project Name="src" InternalType="" Version="10.0.0">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -33,11 +33,11 @@
     <File Name="command.cpp"/>
     <File Name="command.hpp"/>
     <File Name="hwlib-due-spi.hpp"/>
-    <File Name="setup.cpp"/>
-    <File Name="setup.hpp"/>
     <File Name="wrap-hwlib.cpp"/>
     <File Name="wrap-hwlib.hpp"/>
     <File Name="makefile"/>
+    <File Name="display.cpp"/>
+    <File Name="display.hpp"/>
   </VirtualDirectory>
   <Settings Type="Dynamic Library">
     <GlobalSettings>
@@ -50,7 +50,7 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW ( TDM-GCC-32 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-       <Compiler Options="-g;-O0;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="no" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-g;-O0;-std=c++11" C_Options="-g;-O0;-Wall" Assembler="" Required="no" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value=".;../Catch/include"/>
       </Compiler>
       <Linker Options="" Required="yes"/>
@@ -126,4 +126,4 @@
       </Completion>
     </Configuration>
   </Settings>
-</CodeLite_Project>   
+</CodeLite_Project>
