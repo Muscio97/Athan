@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="gas"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\toolchain\;CMake Files\..\..\toolchain\compilers\;CMake Files\..\..\toolchain\targets\;CMake Files\..\..\toolchain\targets\arm32\;CMake Files\..\..\toolchain\targets\arm32\cm3\;CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\;CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\sam3x\;CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\sam3x\sam3x8e\;CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\sam3x\sam3x8e\flashscripts\;CMake Files\..\..\libraries\;CMake Files\..\..\libraries\mustore\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flash">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 flash"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gas.hex">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 gas.hex"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gas.elf">
+				<Option output="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/gas.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBMPTK_TARGET_arduino_due"/>
+					<Add option="-DBMPTK_TARGET=arduino_due"/>
+					<Add option="-DBMPTK_BAUDRATE=19200"/>
+					<Add option="-D__SAM3X8E__"/>
+					<Add option="-DDONT_USE_CMSIS_INIT"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/hwlib/library"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/mustore/include"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/deps"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/atmel/sam3x/deps"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include-fixed"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 gas.elf"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gas.elf/fast">
+				<Option output="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/gas.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBMPTK_TARGET_arduino_due"/>
+					<Add option="-DBMPTK_TARGET=arduino_due"/>
+					<Add option="-DBMPTK_BAUDRATE=19200"/>
+					<Add option="-D__SAM3X8E__"/>
+					<Add option="-DDONT_USE_CMSIS_INIT"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/hwlib/library"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/mustore/include"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/deps"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/atmel/sam3x/deps"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include-fixed"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 gas.elf/fast"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gas.bin">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 gas.bin"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mustore">
+				<Option output="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/libmustore.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBMPTK_TARGET_arduino_due"/>
+					<Add option="-DBMPTK_TARGET=arduino_due"/>
+					<Add option="-DBMPTK_BAUDRATE=19200"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/hwlib/library"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include-fixed"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 mustore"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mustore/fast">
+				<Option output="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/libmustore.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBMPTK_TARGET_arduino_due"/>
+					<Add option="-DBMPTK_TARGET=arduino_due"/>
+					<Add option="-DBMPTK_BAUDRATE=19200"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/hwlib/library"/>
+					<Add directory="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/include-fixed"/>
+					<Add directory="c:\program files (x86)\gnu tools arm embedded\6 2017-q1-update\bin\../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 mustore/fast"/>
+					<CompileFile command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/MUSCIO~1/Desktop/3MLG5U~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/cmake-build-debug/mustore/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/src/fatfs.cc">
+			<Option target="mustore"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/src/fs.cc">
+			<Option target="mustore"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/src/fsnode.cc">
+			<Option target="mustore"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/src/memstore.cc">
+			<Option target="mustore"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/libraries/mustore/src/scalestore.cc">
+			<Option target="mustore"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/alarm.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/alarm.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/command.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/command.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/main.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/mq5.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/mq5.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/parser.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/parser.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/sd-spi.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/sd-spi.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/setup.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/setup.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/speaker.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/speaker.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/wrap-hwlib.cc">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/src/wrap-hwlib.hh">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/toolchain/targets/arm32/cm3/atmel/sam3x/sam3x8e/deps/startup_sam3xa.c">
+			<Option target="gas.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../flags.cmake">
+			<Option virtualFolder="CMake Files\..\..\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/compilers/arm-none-eabi.cmake">
+			<Option virtualFolder="CMake Files\..\..\toolchain\compilers\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/atmel/sam3x/sam3x8e/sam3x8e.cmake">
+			<Option virtualFolder="CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\sam3x\sam3x8e\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../toolchain/targets/arm32/cm3/atmel/sam3x/sam3x8e/flashscripts/arduino_due.cmake">
+			<Option virtualFolder="CMake Files\..\..\toolchain\targets\arm32\cm3\atmel\sam3x\sam3x8e\flashscripts\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/mustore/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\libraries\mustore\"/>
+		</Unit>
+		<Unit filename="C:/Users/MuscioCraft/ClionProjects/R2D2-2017/modules/GAS/../../libraries/mustore/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\libraries\mustore\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
