@@ -4,7 +4,7 @@
  * \license   See LICENSE
  */
 
-#include "command.hh"
+#include "command.hpp"
 
 void Command::commander(uint8_t (*commands)[8][2]) {
     for (int j = 0; j <= numberOfRows; j++) {

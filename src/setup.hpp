@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include "wrap-hwlib.hh"
-#include "command.hh"
+#include "wrap-hwlib.hpp"
+#include "command.hpp"
 
 
 class Setup

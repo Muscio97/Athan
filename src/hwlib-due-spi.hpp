@@ -11,7 +11,7 @@
  */
 #pragma once
 
-#include "wrap-hwlib.hh"
+#include "wrap-hwlib.hpp"
 
 namespace due {
 

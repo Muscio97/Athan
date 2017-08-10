@@ -1,8 +1,8 @@
 /**
  * \file
  */
-#include "wrap-hwlib.hh"
-#include "setup.hh"
+#include "hwlib.hpp"
+#include "setup.hpp"
 #include <cstdio>
 
 /**
