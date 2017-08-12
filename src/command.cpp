@@ -14,24 +14,19 @@ void Command::commander(uint8_t (*commands), int offset) {
 	for(int i = 0; i < stringLength; i++)
 	{
 		
-		for(int j = 0; j < 8; j++)
+		for(int j = 0; j <= 7; j++)
 		{
 			processedCommands[temp] = (uint8_t) j;
-
-			uint8_t id[1] = {(uint8_t) j};
-			spiBus.write_and_read(chipSelect, 1, id, nullptr);
 			//hwlib::cout << (int) processedCommands[temp] << ": ";
 			temp++;
 			processedCommands[temp] = commands[j];
-			uint8_t cmd[1] = {commands[j]};
-			spiBus.write_and_read(chipSelect, 1, cmd, nullptr);
 			//hwlib::cout << hwlib::hex << (int) processedCommands[temp] << hwlib::endl;
 			
 			temp++;
-			
 			//commands++;
 		}
-		//spiBus.write_and_read(chipSelect, 16, processedCommands, nullptr);
+		spiBus.write_and_read(chipSelect, s12), processedCommands, nullptr);
+		hwlib::wait_ms(20);
 	}	
 	
 /*
@@ -51,6 +46,11 @@ void Command::commander(uint8_t (*commands), int offset) {
 
 
 void Command::settings(const uint8_t (*settingsList)[2]) {
+	/** @Mike Waarom is hier gebruik gemaakt van stringLength.
+	 * String length staat toch helemaal niet verband met de configuratie settings die gezonden moeten worden?
+	 * Zie regel 81 in display.hpp.
+	 * Waarschijnlijk is dit niet de oplossing van het probleem.
+	**/
     for (int i = 0; i < numberOfCommands; i++) {
         int l = 0;
         for (int k = 0; k < stringLength; k++) {
@@ -59,6 +59,7 @@ void Command::settings(const uint8_t (*settingsList)[2]) {
             processedCommands[l] = {settingsList[i][1]};
             l++;
         }
+		
         spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * stringLength), processedCommands, nullptr);
     }
 }

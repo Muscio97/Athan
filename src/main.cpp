@@ -27,7 +27,7 @@ int main() {
 
 	hwlib::wait_ms(500);
 	matrix << charValue;
-	hwlib::cout << "======END======\n\r";
+	//hwlib::cout << "======END======\n\r";
 	/**matrix << charValue;
 	
 	displayString text;

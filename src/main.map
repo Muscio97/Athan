@@ -468,7 +468,7 @@ END GROUP
                 [!provide]                PROVIDE (__ram_size, __ram_size)
                 [!provide]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000     0x18dc
+.text           0x00000000     0x17f8
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [!provide]                PROVIDE (__text_start, __text_start)
@@ -506,132 +506,131 @@ END GROUP
                 0x000000e0       0x40 command.o
                 0x000000e0                _ZN5hwlib9uart_putcEc
  .text._ZN7Command9commanderEPhi
-                0x00000120       0x70 command.o
+                0x00000120       0x50 command.o
                 0x00000120                _ZN7Command9commanderEPhi
  .text._ZN7Command8settingsEPA2_Kh
-                0x00000190       0x56 command.o
-                0x00000190                _ZN7Command8settingsEPA2_Kh
+                0x00000170       0x42 command.o
+                0x00000170                _ZN7Command8settingsEPA2_Kh
  .text._ZN7Command6renderEy
-                0x000001e6       0x7c command.o
-                0x000001e6                _ZN7Command6renderEy
+                0x000001b2       0x7c command.o
+                0x000001b2                _ZN7Command6renderEy
  .text._ZN5hwlib7ostreamlsEc
-                0x00000262        0xe display.o
-                0x00000262                _ZN5hwlib7ostreamlsEc
+                0x0000022e        0xe display.o
+                0x0000022e                _ZN5hwlib7ostreamlsEc
  .text._ZN5hwliblsERNS_7ostreamEPKc
-                0x00000270       0x66 display.o
-                0x00000270                _ZN5hwliblsERNS_7ostreamEPKc
+                0x0000023c       0x66 display.o
+                0x0000023c                _ZN5hwliblsERNS_7ostreamEPKc
  .text._ZN5hwliblsERNS_7ostreamEi
-                0x000002d6       0xd6 display.o
-                0x000002d6                _ZN5hwliblsERNS_7ostreamEi
+                0x000002a2       0xd6 display.o
+                0x000002a2                _ZN5hwliblsERNS_7ostreamEi
  .text._ZN7Display7operateEPKc
-                0x000003ac       0xa8 display.o
-                0x000003ac                _ZN7Display7operateEPKc
+                0x00000378       0xb8 display.o
+                0x00000378                _ZN7Display7operateEPKc
  .text._ZN7DisplaylsEPKc
-                0x00000454        0xc display.o
-                0x00000454                _ZN7DisplaylsEPKc
+                0x00000430        0xc display.o
+                0x00000430                _ZN7DisplaylsEPKc
  .text._ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
-                0x00000460        0x4 hwlib.o
-                0x00000460                _ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
+                0x0000043c        0x4 hwlib.o
+                0x0000043c                _ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
  .text._ZN5hwlib7ostream5flushEv
-                0x00000464        0x2 hwlib.o
-                0x00000464                _ZN5hwlib7ostream5flushEv
+                0x00000440        0x2 hwlib.o
+                0x00000440                _ZN5hwlib7ostream5flushEv
  .text._ZN5hwlib5panicEPKcj
-                0x00000466        0x2 hwlib.o
-                0x00000466                _ZN5hwlib5panicEPKcj
+                0x00000442        0x2 hwlib.o
+                0x00000442                _ZN5hwlib5panicEPKcj
  .text._ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
-                0x00000468       0x64 hwlib.o
-                0x00000468                _ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
+                0x00000444       0x64 hwlib.o
+                0x00000444                _ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
  .text._ZN5hwlib20cout_using_uart_putc4putcEc
-                0x000004cc        0xa hwlib.o
-                0x000004cc                _ZN5hwlib20cout_using_uart_putc4putcEc
- *fill*         0x000004d6        0x2 
+                0x000004a8        0xa hwlib.o
+                0x000004a8                _ZN5hwlib20cout_using_uart_putc4putcEc
+ *fill*         0x000004b2        0x2 
  .text._ZN3due7pin_outC2ENS_4pinsE
-                0x000004d8       0x34 main.o
-                0x000004d8                _ZN3due7pin_outC2ENS_4pinsE
-                0x000004d8                _ZN3due7pin_outC1ENS_4pinsE
+                0x000004b4       0x34 main.o
+                0x000004b4                _ZN3due7pin_outC2ENS_4pinsE
+                0x000004b4                _ZN3due7pin_outC1ENS_4pinsE
  .text._ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
-                0x0000050c       0xae main.o
-                0x0000050c                _ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
- *fill*         0x000005ba        0x6 
+                0x000004e8       0xae main.o
+                0x000004e8                _ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
+ *fill*         0x00000596        0x2 
  .text._ZN7DisplayC2ERN5hwlib7spi_busERNS0_7pin_outEi
-                0x000005c0      0x77c main.o
-                0x000005c0                _ZN7DisplayC1ERN5hwlib7spi_busERNS0_7pin_outEi
-                0x000005c0                _ZN7DisplayC2ERN5hwlib7spi_busERNS0_7pin_outEi
+                0x00000598      0x770 main.o
+                0x00000598                _ZN7DisplayC1ERN5hwlib7spi_busERNS0_7pin_outEi
+                0x00000598                _ZN7DisplayC2ERN5hwlib7spi_busERNS0_7pin_outEi
  .text.startup.main
-                0x00000d3c       0xdc main.o
-                0x00000d3c                main
+                0x00000d08       0x7c main.o
+                0x00000d08                main
  .text.__startup
-                0x00000e18       0x48 bmptk_cortex.o
-                0x00000e18                __startup
- .text          0x00000e60       0x9c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-memset.o)
-                0x00000e60                memset
- .text          0x00000efc       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-strlen-stub.o)
-                0x00000efc                strlen
-                0x00000f58                . = ALIGN (0x4)
+                0x00000d84       0x48 bmptk_cortex.o
+                0x00000d84                __startup
+ .text          0x00000dcc       0x9c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-memset.o)
+                0x00000dcc                memset
+ .text          0x00000e68       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-strlen-stub.o)
+                0x00000e68                strlen
+                0x00000ec4                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
- .glue_7        0x00000f58        0x0 linker stubs
- .glue_7t       0x00000f58        0x0 linker stubs
-                0x00000f58                . = ALIGN (0x4)
+ .glue_7        0x00000ec4        0x0 linker stubs
+ .glue_7t       0x00000ec4        0x0 linker stubs
+                0x00000ec4                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata._ZTVN3due7pin_outE
-                0x00000f58       0x10 command.o
-                0x00000f58                _ZTVN3due7pin_outE
+                0x00000ec4       0x10 command.o
+                0x00000ec4                _ZTVN3due7pin_outE
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x00000f68       0x33 command.o
+                0x00000ed4       0x33 command.o
  .rodata._ZZN3due8pin_infoENS_4pinsEE14pin_info_array
-                0x00000f9b       0xa4 command.o
+                0x00000f07       0xa4 command.o
  .rodata._ZN7Display7operateEPKc.str1.1
-                0x0000103f       0x12 display.o
- *fill*         0x00001051        0x3 
+                0x00000fab       0x12 display.o
+ *fill*         0x00000fbd        0x3 
  .rodata._ZTVN5hwlib19_pin_in_dummy_classE
-                0x00001054       0x10 hwlib.o
-                0x00001054                _ZTVN5hwlib19_pin_in_dummy_classE
+                0x00000fc0       0x10 hwlib.o
+                0x00000fc0                _ZTVN5hwlib19_pin_in_dummy_classE
  .rodata._ZTVN5hwlib20cout_using_uart_putcE
-                0x00001064       0x10 hwlib.o
-                0x00001064                _ZTVN5hwlib20cout_using_uart_putcE
+                0x00000fd0       0x10 hwlib.o
+                0x00000fd0                _ZTVN5hwlib20cout_using_uart_putcE
  .rodata._ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
-                0x00001074        0xc main.o
-                0x00001074                _ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
- .rodata        0x00001080      0x84a main.o
- .rodata.main.str1.1
-                0x000018ca       0x12 main.o
-                0x000018dc                . = ALIGN (0x4)
+                0x00000fe0        0xc main.o
+                0x00000fe0                _ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
+ .rodata        0x00000fec      0x80a main.o
+                0x000017f8                . = ALIGN (0x4)
+ *fill*         0x000017f6        0x2 
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000018dc                . = ALIGN (0x4)
+                0x000017f8                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x000018dc                . = ALIGN (0x4)
+                0x000017f8                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x000018dc                . = ALIGN (0x4)
+                0x000017f8                . = ALIGN (0x4)
  *(.eh_frame)
-                0x000018dc                . = ALIGN (0x4)
-                0x000018dc                __text_end = .
+                0x000017f8                . = ALIGN (0x4)
+                0x000017f8                __text_end = .
                 [!provide]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x000018dc        0x0
- .vfp11_veneer  0x000018dc        0x0 linker stubs
+.vfp11_veneer   0x000017f8        0x0
+ .vfp11_veneer  0x000017f8        0x0 linker stubs
 
-.v4_bx          0x000018dc        0x0
- .v4_bx         0x000018dc        0x0 linker stubs
+.v4_bx          0x000017f8        0x0
+ .v4_bx         0x000017f8        0x0 linker stubs
 
-.iplt           0x000018dc        0x0
- .iplt          0x000018dc        0x0 command.o
+.iplt           0x000017f8        0x0
+ .iplt          0x000017f8        0x0 command.o
 
-.rel.dyn        0x000018dc        0x0
- .rel.iplt      0x000018dc        0x0 command.o
+.rel.dyn        0x000017f8        0x0
+ .rel.iplt      0x000017f8        0x0 command.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
  *(.init)
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x000018dc                . = ALIGN (0x4)
-                0x000018dc                __exidx_start = .
+                0x000017f8                . = ALIGN (0x4)
+                0x000017f8                __exidx_start = .
                 [!provide]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000018dc                . = ALIGN (0x4)
-                0x000018dc                __exidx_end = .
+                0x000017f8                . = ALIGN (0x4)
+                0x000017f8                __exidx_end = .
                 [!provide]                PROVIDE (__exidx_end, __exidx_end)
 
 .bss            0x20000000    0x12010
@@ -663,9 +662,9 @@ END GROUP
                 0x20012010                __bss_end = .
                 [!provide]                PROVIDE (__bss_end, __bss_end)
 
-.data           0x20012010       0x18 load address 0x000018dc
+.data           0x20012010       0x18 load address 0x000017f8
                 0x20012010                . = ALIGN (0x4)
-                0x000018dc                __data_init_start = LOADADDR (.data)
+                0x000017f8                __data_init_start = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_start, __data_init_start)
                 0x20012010                __data_start = .
                 [!provide]                PROVIDE (__data_start, __data_start)
@@ -680,13 +679,13 @@ END GROUP
                 0x20012028                . = ALIGN (0x4)
                 0x20012028                __data_end = .
                 [!provide]                PROVIDE (__data_end, __data_end)
-                0x000018dc                __data_init_end = LOADADDR (.data)
+                0x000017f8                __data_init_end = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_end, __data_init_end)
                 0x00000018                PROVIDE (__data_size, (__data_end - __data_start))
                 0x00000018                PROVIDE (__data_init_size, __data_size)
                 [!provide]                PROVIDE (__data_init_end, (__data_init_start + __data_init_size))
 
-.igot.plt       0x20012028        0x0 load address 0x000018f4
+.igot.plt       0x20012028        0x0 load address 0x00001810
  .igot.plt      0x20012028        0x0 command.o
                 0x20012028                . = ALIGN (0x4)
                 0x20012028                __heap_start = .

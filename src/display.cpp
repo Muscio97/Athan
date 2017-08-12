@@ -37,8 +37,8 @@ void Display::operate(const char *inputString) {
     for (int i = 0; i < stringLength - numberOfUnusedMatrices; i++) {
         switch (inputString[i]) {
             case 'a' : display.render(CharA);       break;
-            /**case 'b' : display.render(CharB);       break;
-            case 'c' : display.render(CharC);       break;
+            case 'b' : display.render(CharB);       break;
+            /**case 'c' : display.render(CharC);       break;
             case 'd' : display.render(CharD);       break;
             case 'e' : display.render(CharE);       break;
             case 'f' : display.render(CharF);       break;
