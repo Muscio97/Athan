@@ -6,18 +6,47 @@
 
 #include "command.hpp"
 
-void Command::commander(uint8_t (*commands)[8][2], int offset) {
-		for (int j = 0; j <= 8; j++) {
-			int l = 0;
-			for (int k = 0; k < stringLength; k++) {
-				processedCommands[l] = {(uint8_t) j};
-				l++;
-				processedCommands[l] = {commands[k + offset][j - 1][1]};
-				l++;
-			}
+void Command::commander(uint8_t (*commands), int offset) {
+	int temp = 0;
+	
+	//hwlib::cout << hwlib::hex << (int) commands[0];
+	
+	for(int i = 0; i < stringLength; i++)
+	{
+		
+		for(int j = 0; j < 8; j++)
+		{
+			processedCommands[temp] = (uint8_t) j;
 
-			spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * stringLength), processedCommands, nullptr);
+			uint8_t id[1] = {(uint8_t) j};
+			spiBus.write_and_read(chipSelect, 1, id, nullptr);
+			//hwlib::cout << (int) processedCommands[temp] << ": ";
+			temp++;
+			processedCommands[temp] = commands[j];
+			uint8_t cmd[1] = {commands[j]};
+			spiBus.write_and_read(chipSelect, 1, cmd, nullptr);
+			//hwlib::cout << hwlib::hex << (int) processedCommands[temp] << hwlib::endl;
+			
+			temp++;
+			
+			//commands++;
 		}
+		//spiBus.write_and_read(chipSelect, 16, processedCommands, nullptr);
+	}	
+	
+/*
+	for (int j = 0; j <= 8; j++) {
+		int l = 0;
+		for (int k = 0; k < stringLength; k++) {
+			processedCommands[l] = {(uint8_t) j};
+			l++;
+			processedCommands[l] = {commands[k + offset][j - 1][1]};
+			l++;
+		}
+
+		spiBus.write_and_read(chipSelect, static_cast<const size_t >(2 * stringLength), processedCommands, nullptr);
+	}
+*/
 }
 
 
@@ -34,27 +63,27 @@ void Command::settings(const uint8_t (*settingsList)[2]) {
     }
 }
 
-void Command::converter(uint8_t (*renderInput)[8], uint8_t (*converterOutput)[2]) {
-    for (uint8_t i = 0; i < 8; i++) {
-        uint8_t shiftVariable = 0;
-        int rowCounter = 0;
-        for (int j = 8; j >= 0; j--) {
-            shiftVariable |= renderInput[i][rowCounter - 1] << (j);
-            rowCounter++;
-        }
-        converterOutput[i][0] = i + static_cast<uint8_t >(1);
-        converterOutput[i][1] = shiftVariable;
-    }
 
-}
 
-void Command::render(uint8_t (*renderInput)[8]) {
-    converter(renderInput, converterOutput);
-    for (int i = 0; i < 8; i++) {
-        commands[stringLength+numberOfWrites][i][1] = converterOutput[i][1];
-    }
+void Command::render(uint64_t renderInput) {
+	//uint8_t *temp = (uint8_t *)&renderInput;
+	
+	for(int i = 0; i < 8; i++) {
+		//hwlib::cout << hwlib::hex  << (int) (renderInput & 0xFF) << hwlib::endl;
+		commands[i] = renderInput & 0xFF;
+		renderInput >>= 8;
+	}
+	
+    //for (int i = 0; i < 8; i++) {
+        //commands[stringLength+i] = temp[i];
+    //}
+	
     numberOfWrites++;
-	enableShiftR();
+	//enableShiftR();
+	
+	//hwlib::cout << "Writes: " << numberOfWrites << hwlib::endl;
+	//hwlib::cout << "String length: " << stringLength;
+	
     if (numberOfWrites == stringLength) {
        // numberOfWrites = 0;
 		if (shiftEnabledL)

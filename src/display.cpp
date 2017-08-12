@@ -31,15 +31,13 @@ void Display::operate(const char *inputString) {
 
 	
     for (int i = 0; i < numberOfUnusedMatrices; i++) {
-        display.render(CharSpace);
+        //display.render(CharSpace);
     }
 
     for (int i = 0; i < stringLength - numberOfUnusedMatrices; i++) {
-        hwlib::cout << inputString[i] << "\n\r";
-        hwlib::cout << stringLength-numberOfUnusedMatrices<< "\n\r";
         switch (inputString[i]) {
             case 'a' : display.render(CharA);       break;
-            case 'b' : display.render(CharB);       break;
+            /**case 'b' : display.render(CharB);       break;
             case 'c' : display.render(CharC);       break;
             case 'd' : display.render(CharD);       break;
             case 'e' : display.render(CharE);       break;
@@ -88,8 +86,8 @@ void Display::operate(const char *inputString) {
             case '/' : display.render(CharDivide);  break;
             case '=' : display.render(CharEqual);   break;
             case ';' : display.render(CharSemi);    break;
-            case ':' : display.render(CharColon);   break;
-            default:   display.render(CharSpace);   break;
+            case ':' : display.render(CharColon);   break;**/
+            default:   display.render(/*CharSpace*/CharA);   break;
         }
     }
 	

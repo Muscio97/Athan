@@ -37,9 +37,8 @@ private:
     /**
     * Matrices used in .cpp names represents their functionality.
     */
-    uint8_t processedCommands[1000];
-    uint8_t converterOutput[8][2];
-    uint8_t commands[1000][8][2] = {0};
+    uint8_t processedCommands[768] = {0};
+    uint8_t commands[384] = {0}; // want elke matrix is 8 dingen @Mike
 
     /**
      * \brief This function expects a 3D array. It's a array of matrices.
@@ -49,7 +48,7 @@ private:
      * [3] Data that you want to write to the MAX7219.
      * \param commands Commands you want to send to the MAX7219 chip.
      */
-    void commander(uint8_t (*commands)[8][2], int offset = 0);
+    void commander(uint8_t (*commands), int offset = 0);
 
     /**
      * \brief This function converts a 8x8 matrix to a 8x2 matrix.
@@ -58,7 +57,7 @@ private:
      * \param[in] renderInput       Accept 8x8 matrix.
      * \param[out] converterOutput  8x2 matrix.
      */
-    void converter(uint8_t (*renderInput)[8], uint8_t (*converterOutput)[2]);
+    void converter(const uint64_t renderInput, uint8_t (*converterOutput)[2]);
 
 public:
     /**
@@ -91,7 +90,7 @@ public:
      *
      * @param[in] renderInput   Accepts 8x8 matrix.
      */
-    void render(uint8_t (*renderInput)[8]);
+    void render(uint64_t renderInput);
 	
 	void enableShiftL();
 	void disableShiftL();
