@@ -1,44 +1,26 @@
 /******************************************************************************
-
 * author: Freddie Chopin, http://www.freddiechopin.info/
-
 * file: lpc1114_rom.ld
-
 * last change: 2010-10-13
-
 *
-
 * chip: LPC1114
-
 * compiler: arm-none-eabi-gcc (Sourcery G++ Lite 2010q1-188) 4.4.1
-
 *
-
 * description:
-
 * Linker script for LPC1114 chip (/301 version) (32kB Flash, 4kB SRAM).
-
 ******************************************************************************/
 SEARCH_DIR(.);
 /*
-
 +=============================================================================+
-
 | format configurations
-
 +=============================================================================+
-
 */
 OUTPUT_FORMAT("elf32-littlearm", "elf32-bigarm", "elf32-littlearm");
 OUTPUT_ARCH(arm);
 /*
-
 +=============================================================================+
-
 | available memories definitions
-
 +=============================================================================+
-
 */
 MEMORY
 {
@@ -59,23 +41,15 @@ PROVIDE(__ram_start = __ram_start);
 PROVIDE(__ram_size = __ram_size);
 PROVIDE(__ram_end = __ram_end);
 /*
-
 +=============================================================================+
-
 | entry point
-
 +=============================================================================+
-
 */
 ENTRY( __startup );
 /*
-
 +=============================================================================+
-
 | put data in sections
-
 +=============================================================================+
-
 */
 SECTIONS
 {
@@ -101,52 +75,29 @@ SECTIONS
   . = ALIGN(4);
   *(.eh_frame); /* information used for stack unwinding during exception */
 /*	
-
 		. = ALIGN(4);
-
 		KEEP(*(.init));
-
 		. = ALIGN(4);
-
 		__preinit_array_start = .;
-
 		KEEP(*(.preinit_array));
-
 		. = ALIGN(4);
-
 		__preinit_array_end = .;
-
 		__init_array_start = .;
-
 		KEEP(*(SORT(.init_array.*)));
-
 		. = ALIGN(4);
-
 		KEEP(*(.init_array));
-
 		. = ALIGN(4);
-
 		__init_array_end = .;	
-
 */
 /*
-
 		KEEP(*(.fini));
-
 		. = ALIGN(4);
-
 		__fini_array_start = .;
-
 		KEEP(*(.fini_array));
-
 		. = ALIGN(4);
-
 		KEEP(*(SORT(.fini_array.*)));
-
 		. = ALIGN(4);
-
 		__fini_array_end = .;
-
 */
   . = ALIGN(4);
   __text_end = .;
@@ -220,9 +171,7 @@ PROVIDE( __data_init_end = __data_init_start + __data_init_size );
  .stab 0 (NOLOAD) : { *(.stab) }
  .stabstr 0 (NOLOAD) : { *(.stabstr) }
  /* DWARF debug sections.
-
 	* Symbols in the DWARF debugging sections are relative to the beginning
-
 	* of the section so we begin them at 0. */
  /* DWARF 1 */
  .debug 0 : { *(.debug) }
@@ -256,7 +205,5 @@ PROVIDE(__bss_size = __bss_end - __bss_start);
 PROVIDE(__stack_size = __stack_end - __stack_start);
 PROVIDE(__heap_size = __heap_end - __heap_start);
 /******************************************************************************
-
 * END OF FILE
-
 ******************************************************************************/
