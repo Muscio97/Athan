@@ -24,9 +24,6 @@ Discarded input sections
  .group         0x00000000        0x8 command.o
  .group         0x00000000        0x8 command.o
  .group         0x00000000        0x8 command.o
- .group         0x00000000        0x8 command.o
- .group         0x00000000        0x8 command.o
- .group         0x00000000        0x8 command.o
  .text          0x00000000        0x0 command.o
  .data          0x00000000        0x0 command.o
  .bss           0x00000000        0x0 command.o
@@ -40,6 +37,8 @@ Discarded input sections
                 0x00000000       0x78 command.o
  .text._ZN5hwlib7wait_nsEi
                 0x00000000       0x14 command.o
+ .text._ZN5hwlib9uart_putcEc
+                0x00000000       0x40 command.o
  .text._ZN5hwlib9uart_getcEv
                 0x00000000       0x3c command.o
  .text._ZN5hwlib6now_usEv
@@ -48,6 +47,8 @@ Discarded input sections
                 0x00000000       0x10 command.o
  .bss._ZGVZN5hwlib9uart_getcEvE3pin
                 0x00000000        0x4 command.o
+ .bss._ZGVZN5hwlib9uart_putcEcE3pin
+                0x00000000        0x4 command.o
  .bss._ZZN3due6now_usEvE4high
                 0x00000000        0x8 command.o
  .bss._ZZN3due6now_usEvE8last_low
@@ -55,6 +56,8 @@ Discarded input sections
  .bss._ZZN3due6now_usEvE9init_done
                 0x00000000        0x1 command.o
  .bss._ZZN5hwlib9uart_getcEvE3pin
+                0x00000000        0xc command.o
+ .bss._ZZN5hwlib9uart_putcEcE3pin
                 0x00000000        0xc command.o
  .rodata._ZZN3due11ad_pin_infoENS_7ad_pinsEE17ad_pin_info_array
                 0x00000000        0xc command.o
@@ -117,6 +120,8 @@ Discarded input sections
                 0x00000000        0xc display.o
  .bss._ZZN5hwlib9uart_putcEcE3pin
                 0x00000000        0xc display.o
+ .data.colon    0x00000000        0x8 display.o
+ .data.semi     0x00000000        0x8 display.o
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
                 0x00000000       0x33 display.o
  .rodata._ZZN3due11ad_pin_infoENS_7ad_pinsEE17ad_pin_info_array
@@ -191,6 +196,8 @@ Discarded input sections
                 0x00000000        0x2 hwlib.o
  .text._ZN5hwlib19_pin_oc_dummy_class3getENS_9bufferingE
                 0x00000000        0x4 hwlib.o
+ .text._ZN5hwlib7ostream5flushEv
+                0x00000000        0x2 hwlib.o
  .text._ZNK5hwlib9image_8x818get_implementationENS_8locationE
                 0x00000000       0x44 hwlib.o
  .text._ZN3due6pin_in3getEN5hwlib9bufferingE
@@ -227,6 +234,8 @@ Discarded input sections
                 0x00000000       0x78 hwlib.o
  .text._ZN5hwlib7wait_usEi
                 0x00000000       0x28 hwlib.o
+ .text._ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
+                0x00000000       0x64 hwlib.o
  .text._ZN5hwlib7wait_nsEi
                 0x00000000       0x14 hwlib.o
  .text._ZN5hwlib7wait_msEi
@@ -247,6 +256,8 @@ Discarded input sections
                 0x00000000       0x36 hwlib.o
  .text._ZN5hwlib9uart_putcEc
                 0x00000000       0x3c hwlib.o
+ .text._ZN5hwlib20cout_using_uart_putc4putcEc
+                0x00000000        0xa hwlib.o
  .text._ZN5hwlib6now_usEv
                 0x00000000        0x8 hwlib.o
  .text._ZN5hwlib24uart_getc_bit_banged_pinERNS_6pin_inE
@@ -261,6 +272,8 @@ Discarded input sections
                 0x00000000       0x10 hwlib.o
  .rodata._ZTVN5hwlib19_pin_oc_dummy_classE
                 0x00000000       0x18 hwlib.o
+ .rodata._ZTVN5hwlib20cout_using_uart_putcE
+                0x00000000       0x10 hwlib.o
  .rodata._ZTVN5hwlib19cin_using_uart_getcE
                 0x00000000        0xc hwlib.o
  .rodata._ZTVN5hwlib9image_8x8E
@@ -301,6 +314,8 @@ Discarded input sections
                 0x00000000        0x4 hwlib.o
  .data._ZN5hwlib3cinE
                 0x00000000        0x4 hwlib.o
+ .data._ZN5hwlib4coutE
+                0x00000000       0x14 hwlib.o
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
                 0x00000000       0x33 hwlib.o
  .rodata._ZN5hwlib16font_default_8x86imagesE
@@ -455,7 +470,7 @@ END GROUP
                 [!provide]                PROVIDE (__ram_size, __ram_size)
                 [!provide]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000      0x874
+.text           0x00000000      0x9e8
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [!provide]                PROVIDE (__text_start, __text_start)
@@ -474,142 +489,118 @@ END GROUP
  .text._ZN3due7pin_out3setEbN5hwlib9bufferingE
                 0x00000024        0xe command.o
                 0x00000024                _ZN3due7pin_out3setEbN5hwlib9bufferingE
- .text._ZN5hwlib7ostreamlsEc
-                0x00000032        0xe command.o
-                0x00000032                _ZN5hwlib7ostreamlsEc
- .text._ZN5hwliblsERNS_7ostreamEPKc
-                0x00000040       0x66 command.o
-                0x00000040                _ZN5hwliblsERNS_7ostreamEPKc
- .text._ZN5hwliblsERNS_7ostreamEi
-                0x000000a6       0xd6 command.o
-                0x000000a6                _ZN5hwliblsERNS_7ostreamEi
+ *fill*         0x00000032        0x2 
  .text._ZN3due8pin_infoENS_4pinsE
-                0x0000017c       0x20 command.o
-                0x0000017c                _ZN3due8pin_infoENS_4pinsE
+                0x00000034       0x20 command.o
+                0x00000034                _ZN3due8pin_infoENS_4pinsE
  .text._ZN3due14port_registersEm
-                0x0000019c       0x48 command.o
-                0x0000019c                _ZN3due14port_registersEm
- *fill*         0x000001e4        0xc 
+                0x00000054       0x48 command.o
+                0x00000054                _ZN3due14port_registersEm
+ *fill*         0x0000009c        0x4 
  .text._ZN5hwlib7wait_usEi
-                0x000001f0       0x28 command.o
-                0x000001f0                _ZN5hwlib7wait_usEi
+                0x000000a0       0x28 command.o
+                0x000000a0                _ZN5hwlib7wait_usEi
  .text._ZN5hwlib7wait_msEi
-                0x00000218       0x16 command.o
-                0x00000218                _ZN5hwlib7wait_msEi
- *fill*         0x0000022e        0x2 
- .text._ZN5hwlib9uart_putcEc
-                0x00000230       0x40 command.o
-                0x00000230                _ZN5hwlib9uart_putcEc
- .text._ZN19MatrixDisplayParser15spiParseAndSendEPA8_Kh
-                0x00000270       0x60 command.o
-                0x00000270                _ZN19MatrixDisplayParser15spiParseAndSendEPA8_Kh
+                0x000000c8       0x16 command.o
+                0x000000c8                _ZN5hwlib7wait_msEi
+ .text._ZN19MatrixDisplayParser15spiParseAndSendEPKh
+                0x000000de       0x5e command.o
+                0x000000de                _ZN19MatrixDisplayParser15spiParseAndSendEPKh
  .text._ZN19MatrixDisplayParser8settingsEPA2_Kh
-                0x000002d0       0x42 command.o
-                0x000002d0                _ZN19MatrixDisplayParser8settingsEPA2_Kh
- *fill*         0x00000312        0x2 
+                0x0000013c       0x56 command.o
+                0x0000013c                _ZN19MatrixDisplayParser8settingsEPA2_Kh
+ *fill*         0x00000192        0x2 
  .text._ZN19MatrixDisplayParser6renderEyi
-                0x00000314       0x6c command.o
-                0x00000314                _ZN19MatrixDisplayParser6renderEyi
+                0x00000194       0x50 command.o
+                0x00000194                _ZN19MatrixDisplayParser6renderEyi
  .text._ZN5Setup13displayStringEPKc
-                0x00000380      0x14c display.o
-                0x00000380                _ZN5Setup13displayStringEPKc
+                0x000001e4      0x4dc display.o
+                0x000001e4                _ZN5Setup13displayStringEPKc
  .text._ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
-                0x000004cc        0x4 hwlib.o
-                0x000004cc                _ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
- .text._ZN5hwlib7ostream5flushEv
-                0x000004d0        0x2 hwlib.o
-                0x000004d0                _ZN5hwlib7ostream5flushEv
+                0x000006c0        0x4 hwlib.o
+                0x000006c0                _ZN5hwlib19_pin_in_dummy_class3getENS_9bufferingE
  .text._ZN5hwlib5panicEPKcj
-                0x000004d2        0x2 hwlib.o
-                0x000004d2                _ZN5hwlib5panicEPKcj
- .text._ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
-                0x000004d4       0x64 hwlib.o
-                0x000004d4                _ZN5hwlib24uart_putc_bit_banged_pinEcRNS_7pin_outE
- .text._ZN5hwlib20cout_using_uart_putc4putcEc
-                0x00000538        0xa hwlib.o
-                0x00000538                _ZN5hwlib20cout_using_uart_putc4putcEc
- *fill*         0x00000542        0x2 
+                0x000006c4        0x2 hwlib.o
+                0x000006c4                _ZN5hwlib5panicEPKcj
+ *fill*         0x000006c6        0x2 
  .text._ZN3due7pin_outC2ENS_4pinsE
-                0x00000544       0x34 main.o
-                0x00000544                _ZN3due7pin_outC2ENS_4pinsE
-                0x00000544                _ZN3due7pin_outC1ENS_4pinsE
+                0x000006c8       0x34 main.o
+                0x000006c8                _ZN3due7pin_outC2ENS_4pinsE
+                0x000006c8                _ZN3due7pin_outC1ENS_4pinsE
  .text._ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
-                0x00000578       0xae main.o
-                0x00000578                _ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
- *fill*         0x00000626        0x2 
+                0x000006fc       0xae main.o
+                0x000006fc                _ZN5hwlib33spi_bus_bit_banged_sclk_mosi_miso14write_and_readERNS_7pin_outEjPKhPh
+ *fill*         0x000007aa        0x2 
  .text.startup.main
-                0x00000628       0x80 main.o
-                0x00000628                main
+                0x000007ac       0x80 main.o
+                0x000007ac                main
  .text.__startup
-                0x000006a8       0x48 bmptk_cortex.o
-                0x000006a8                __startup
- .text          0x000006f0       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-strlen-stub.o)
-                0x000006f0                strlen
-                0x0000074c                . = ALIGN (0x4)
+                0x0000082c       0x48 bmptk_cortex.o
+                0x0000082c                __startup
+ .text          0x00000874       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m3\libc.a(lib_a-strlen-stub.o)
+                0x00000874                strlen
+                0x000008d0                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
- .glue_7        0x0000074c        0x0 linker stubs
- .glue_7t       0x0000074c        0x0 linker stubs
-                0x0000074c                . = ALIGN (0x4)
+ .glue_7        0x000008d0        0x0 linker stubs
+ .glue_7t       0x000008d0        0x0 linker stubs
+                0x000008d0                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata._ZTVN3due7pin_outE
-                0x0000074c       0x10 command.o
-                0x0000074c                _ZTVN3due7pin_outE
+                0x000008d0       0x10 command.o
+                0x000008d0                _ZTVN3due7pin_outE
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x0000075c       0x33 command.o
+                0x000008e0       0x33 command.o
  .rodata._ZZN3due8pin_infoENS_4pinsEE14pin_info_array
-                0x0000078f       0xa4 command.o
+                0x00000913       0xa4 command.o
  .rodata._ZL8settings
-                0x00000833        0xa display.o
- *fill*         0x0000083d        0x3 
+                0x000009b7        0xa display.o
+ *fill*         0x000009c1        0x3 
  .rodata._ZTVN5hwlib19_pin_in_dummy_classE
-                0x00000840       0x10 hwlib.o
-                0x00000840                _ZTVN5hwlib19_pin_in_dummy_classE
- .rodata._ZTVN5hwlib20cout_using_uart_putcE
-                0x00000850       0x10 hwlib.o
-                0x00000850                _ZTVN5hwlib20cout_using_uart_putcE
+                0x000009c4       0x10 hwlib.o
+                0x000009c4                _ZTVN5hwlib19_pin_in_dummy_classE
  .rodata._ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
-                0x00000860        0xc main.o
-                0x00000860                _ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
+                0x000009d4        0xc main.o
+                0x000009d4                _ZTVN5hwlib33spi_bus_bit_banged_sclk_mosi_misoE
  .rodata.main.str1.1
-                0x0000086c        0x5 main.o
-                0x00000874                . = ALIGN (0x4)
- *fill*         0x00000871        0x3 
+                0x000009e0        0x5 main.o
+                0x000009e8                . = ALIGN (0x4)
+ *fill*         0x000009e5        0x3 
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000874                . = ALIGN (0x4)
+                0x000009e8                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x00000874                . = ALIGN (0x4)
+                0x000009e8                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x00000874                . = ALIGN (0x4)
+                0x000009e8                . = ALIGN (0x4)
  *(.eh_frame)
-                0x00000874                . = ALIGN (0x4)
-                0x00000874                __text_end = .
+                0x000009e8                . = ALIGN (0x4)
+                0x000009e8                __text_end = .
                 [!provide]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x00000874        0x0
- .vfp11_veneer  0x00000874        0x0 linker stubs
+.vfp11_veneer   0x000009e8        0x0
+ .vfp11_veneer  0x000009e8        0x0 linker stubs
 
-.v4_bx          0x00000874        0x0
- .v4_bx         0x00000874        0x0 linker stubs
+.v4_bx          0x000009e8        0x0
+ .v4_bx         0x000009e8        0x0 linker stubs
 
-.iplt           0x00000874        0x0
- .iplt          0x00000874        0x0 command.o
+.iplt           0x000009e8        0x0
+ .iplt          0x000009e8        0x0 command.o
 
-.rel.dyn        0x00000874        0x0
- .rel.iplt      0x00000874        0x0 command.o
+.rel.dyn        0x000009e8        0x0
+ .rel.iplt      0x000009e8        0x0 command.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
  *(.init)
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x00000874                . = ALIGN (0x4)
-                0x00000874                __exidx_start = .
+                0x000009e8                . = ALIGN (0x4)
+                0x000009e8                __exidx_start = .
                 [!provide]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000874                . = ALIGN (0x4)
-                0x00000874                __exidx_end = .
+                0x000009e8                . = ALIGN (0x4)
+                0x000009e8                __exidx_end = .
                 [!provide]                PROVIDE (__exidx_end, __exidx_end)
 
 .bss            0x20000000    0x12010
@@ -631,45 +622,230 @@ END GROUP
                 [!provide]                PROVIDE (__bss_start, __bss_start)
                 0x20012000                . = ALIGN (0x4)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss._ZGVZN5hwlib9uart_putcEcE3pin
+ .bss._ZZN19MatrixDisplayParser6renderEyiE11listCounter
                 0x20012000        0x4 command.o
- .bss._ZZN5hwlib9uart_putcEcE3pin
-                0x20012004        0xc command.o
+ *fill*         0x20012004        0x4 
+ .bss.space     0x20012008        0x8 display.o
+                0x20012008                space
                 0x20012010                . = ALIGN (0x4)
  *(COMMON)
                 0x20012010                . = ALIGN (0x4)
                 0x20012010                __bss_end = .
                 [!provide]                PROVIDE (__bss_end, __bss_end)
 
-.data           0x20012010       0x18 load address 0x00000874
+.data           0x20012010      0x2cc load address 0x000009e8
                 0x20012010                . = ALIGN (0x4)
-                0x00000874                __data_init_start = LOADADDR (.data)
+                0x000009e8                __data_init_start = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_start, __data_init_start)
                 0x20012010                __data_start = .
                 [!provide]                PROVIDE (__data_start, __data_start)
                 0x20012010                . = ALIGN (0x4)
  *(.data .data.* .gnu.linkonce.d.*)
+ .data.A        0x20012010        0x8 display.o
+                0x20012010                A
+ .data.B        0x20012018        0x8 display.o
+                0x20012018                B
+ .data.C        0x20012020        0x8 display.o
+                0x20012020                C
+ .data.D        0x20012028        0x8 display.o
+                0x20012028                D
+ .data.E        0x20012030        0x8 display.o
+                0x20012030                E
+ .data.F        0x20012038        0x8 display.o
+                0x20012038                F
+ .data.G        0x20012040        0x8 display.o
+                0x20012040                G
+ .data.H        0x20012048        0x8 display.o
+                0x20012048                H
+ .data.I        0x20012050        0x8 display.o
+                0x20012050                I
+ .data.J        0x20012058        0x8 display.o
+                0x20012058                J
+ .data.K        0x20012060        0x8 display.o
+                0x20012060                K
+ .data.L        0x20012068        0x8 display.o
+                0x20012068                L
+ .data.M        0x20012070        0x8 display.o
+                0x20012070                M
+ .data.N        0x20012078        0x8 display.o
+                0x20012078                N
+ .data.O        0x20012080        0x8 display.o
+                0x20012080                O
+ .data.P        0x20012088        0x8 display.o
+                0x20012088                P
+ .data.Q        0x20012090        0x8 display.o
+                0x20012090                Q
+ .data.R        0x20012098        0x8 display.o
+                0x20012098                R
+ .data.S        0x200120a0        0x8 display.o
+                0x200120a0                S
+ .data.T        0x200120a8        0x8 display.o
+                0x200120a8                T
+ .data.U        0x200120b0        0x8 display.o
+                0x200120b0                U
+ .data.V        0x200120b8        0x8 display.o
+                0x200120b8                V
+ .data.W        0x200120c0        0x8 display.o
+                0x200120c0                W
+ .data.X        0x200120c8        0x8 display.o
+                0x200120c8                X
+ .data.Y        0x200120d0        0x8 display.o
+                0x200120d0                Y
+ .data.Z        0x200120d8        0x8 display.o
+                0x200120d8                Z
+ .data.a        0x200120e0        0x8 display.o
+                0x200120e0                a
+ .data.also     0x200120e8        0x8 display.o
+                0x200120e8                also
+ .data.at       0x200120f0        0x8 display.o
+                0x200120f0                at
+ .data.b        0x200120f8        0x8 display.o
+                0x200120f8                b
+ .data.bleft    0x20012100        0x8 display.o
+                0x20012100                bleft
+ .data.bright   0x20012108        0x8 display.o
+                0x20012108                bright
+ .data.bslash   0x20012110        0x8 display.o
+                0x20012110                bslash
+ .data.bup      0x20012118        0x8 display.o
+                0x20012118                bup
+ .data.c        0x20012120        0x8 display.o
+                0x20012120                c
+ .data.charEight
+                0x20012128        0x8 display.o
+                0x20012128                charEight
+ .data.charFive
+                0x20012130        0x8 display.o
+                0x20012130                charFive
+ .data.charFour
+                0x20012138        0x8 display.o
+                0x20012138                charFour
+ .data.charNine
+                0x20012140        0x8 display.o
+                0x20012140                charNine
+ .data.charOne  0x20012148        0x8 display.o
+                0x20012148                charOne
+ .data.charSeven
+                0x20012150        0x8 display.o
+                0x20012150                charSeven
+ .data.charSix  0x20012158        0x8 display.o
+                0x20012158                charSix
+ .data.charThree
+                0x20012160        0x8 display.o
+                0x20012160                charThree
+ .data.charTwo  0x20012168        0x8 display.o
+                0x20012168                charTwo
+ .data.charZero
+                0x20012170        0x8 display.o
+                0x20012170                charZero
+ .data.clbrckt  0x20012178        0x8 display.o
+                0x20012178                clbrckt
+ .data.comma    0x20012180        0x8 display.o
+                0x20012180                comma
+ .data.crbrckt  0x20012188        0x8 display.o
+                0x20012188                crbrckt
+ .data.d        0x20012190        0x8 display.o
+                0x20012190                d
+ .data.divide   0x20012198        0x8 display.o
+                0x20012198                divide
+ .data.dollar   0x200121a0        0x8 display.o
+                0x200121a0                dollar
+ .data.dot      0x200121a8        0x8 display.o
+                0x200121a8                dot
+ .data.e        0x200121b0        0x8 display.o
+                0x200121b0                e
+ .data.equal    0x200121b8        0x8 display.o
+                0x200121b8                equal
+ .data.exclam   0x200121c0        0x8 display.o
+                0x200121c0                exclam
+ .data.f        0x200121c8        0x8 display.o
+                0x200121c8                f
+ .data.g        0x200121d0        0x8 display.o
+                0x200121d0                g
+ .data.h        0x200121d8        0x8 display.o
+                0x200121d8                h
+ .data.hashtag  0x200121e0        0x8 display.o
+                0x200121e0                hashtag
+ .data.hlcomma  0x200121e8        0x8 display.o
+                0x200121e8                hlcomma
+ .data.hrcomma  0x200121f0        0x8 display.o
+                0x200121f0                hrcomma
+ .data.i        0x200121f8        0x8 display.o
+                0x200121f8                i
+ .data.j        0x20012200        0x8 display.o
+                0x20012200                j
+ .data.k        0x20012208        0x8 display.o
+                0x20012208                k
+ .data.l        0x20012210        0x8 display.o
+                0x20012210                l
+ .data.lbrecket
+                0x20012218        0x8 display.o
+                0x20012218                lbrecket
+ .data.m        0x20012220        0x8 display.o
+                0x20012220                m
+ .data.minus    0x20012228        0x8 display.o
+                0x20012228                minus
+ .data.muliply  0x20012230        0x8 display.o
+                0x20012230                muliply
+ .data.n        0x20012238        0x8 display.o
+                0x20012238                n
+ .data.o        0x20012240        0x8 display.o
+                0x20012240                o
+ .data.p        0x20012248        0x8 display.o
+                0x20012248                p
+ .data.plus     0x20012250        0x8 display.o
+                0x20012250                plus
+ .data.procent  0x20012258        0x8 display.o
+                0x20012258                procent
+ .data.q        0x20012260        0x8 display.o
+                0x20012260                q
+ .data.quest    0x20012268        0x8 display.o
+                0x20012268                quest
+ .data.r        0x20012270        0x8 display.o
+                0x20012270                r
+ .data.rbrecket
+                0x20012278        0x8 display.o
+                0x20012278                rbrecket
+ .data.s        0x20012280        0x8 display.o
+                0x20012280                s
+ .data.slbrckt  0x20012288        0x8 display.o
+                0x20012288                slbrckt
+ .data.srbrckt  0x20012290        0x8 display.o
+                0x20012290                srbrckt
+ .data.t        0x20012298        0x8 display.o
+                0x20012298                t
+ .data.tilde    0x200122a0        0x8 display.o
+                0x200122a0                tilde
+ .data.u        0x200122a8        0x8 display.o
+                0x200122a8                u
+ .data.v        0x200122b0        0x8 display.o
+                0x200122b0                v
+ .data.w        0x200122b8        0x8 display.o
+                0x200122b8                w
+ .data.x        0x200122c0        0x8 display.o
+                0x200122c0                x
+ .data.y        0x200122c8        0x8 display.o
+                0x200122c8                y
+ .data.z        0x200122d0        0x8 display.o
+                0x200122d0                z
  .data._ZN5hwlib12pin_in_dummyE
-                0x20012010        0x4 hwlib.o
-                0x20012010                _ZN5hwlib12pin_in_dummyE
- .data._ZN5hwlib4coutE
-                0x20012014       0x14 hwlib.o
-                0x20012014                _ZN5hwlib4coutE
-                0x20012028                . = ALIGN (0x4)
-                0x20012028                __data_end = .
+                0x200122d8        0x4 hwlib.o
+                0x200122d8                _ZN5hwlib12pin_in_dummyE
+                0x200122dc                . = ALIGN (0x4)
+                0x200122dc                __data_end = .
                 [!provide]                PROVIDE (__data_end, __data_end)
-                0x00000874                __data_init_end = LOADADDR (.data)
+                0x000009e8                __data_init_end = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_end, __data_init_end)
-                0x00000018                PROVIDE (__data_size, (__data_end - __data_start))
-                0x00000018                PROVIDE (__data_init_size, __data_size)
+                0x000002cc                PROVIDE (__data_size, (__data_end - __data_start))
+                0x000002cc                PROVIDE (__data_init_size, __data_size)
                 [!provide]                PROVIDE (__data_init_end, (__data_init_start + __data_init_size))
 
-.igot.plt       0x20012028        0x0 load address 0x0000088c
- .igot.plt      0x20012028        0x0 command.o
-                0x20012028                . = ALIGN (0x4)
-                0x20012028                __heap_start = .
+.igot.plt       0x200122dc        0x0 load address 0x00000cb4
+ .igot.plt      0x200122dc        0x0 command.o
+                0x200122dc                . = ALIGN (0x4)
+                0x200122dc                __heap_start = .
                 [!provide]                PROVIDE (__heap_start, __heap_start)
-                0x20012028                . = ALIGN (0x4)
+                0x200122dc                . = ALIGN (0x4)
                 0x20018000                __heap_end = __ram_end
                 [!provide]                PROVIDE (__heap_end, __heap_end)
 

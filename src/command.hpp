@@ -28,16 +28,15 @@ private:
 
     /// Represents the size of a matrix and is used to prevent no junk data is added to them.
     int numberOfCommands = 5;
-    
-    int numberOfWrites = 0;
+
+    uint8_t temp = 0;
     /**
     * \brief Matrices used in .cc names represents their functionality.
      *
      * The size of the matrices and arrays support up to 20 characters.
     */
     uint8_t processedCommands[20];
-    uint8_t converterOutput[8][2];
-    uint8_t commands[20][8];
+    uint8_t commands[1000];
     /**
      * \brief Allows commands to be send via Hwlib SPI to the led matrix.
      *
@@ -50,8 +49,8 @@ private:
      *
      * \param[in] dataToSend A pointer to a location in an array that contains an 8x2 matrix.
      */
-    void spiParseAndSend(const uint8_t (*dataToSend)[8]);
-
+    
+    void spiParseAndSend(const uint8_t (*dataToSend));
     /**
      * \brief This function converts a 8x8 matrix to a 8x2 matrix.
      *
@@ -59,7 +58,7 @@ private:
      * \param[in] renderInput       Accept 8x8 matrix.
      * \param[out] converterOutput  8x2 matrix.
      */
- //  void converter(uint64_t renderInput, uint8_t (*converterOutput)[2]);
+    //void converter(const uint8_t (*renderInput)[8], uint8_t (*converterOutput));
 
 public:
     /**
