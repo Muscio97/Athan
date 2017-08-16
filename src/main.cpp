@@ -19,7 +19,7 @@ int main() {
 
     Setup matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
 
-    const char charValue[5]= "*/|<";
+    const char charValue[5]= "ABCD";
 
     matrix.displayString(charValue);
 
