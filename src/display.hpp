@@ -51,5 +51,6 @@ public:
     void displayString(const char *inputString);
 	
 	Display & operator<< (const char *lhs);
+
 };
 

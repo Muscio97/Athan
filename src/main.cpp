@@ -17,11 +17,12 @@ int main() {
     target::pin_out clock(target::pins::d6);
     hwlib::spi_bus_bit_banged_sclk_mosi_miso spi(clock, digitalIn, hwlib::pin_in_dummy);
 
-    Setup matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
+    Display matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
 
     const char charValue[5]= "ABCD";
 
-    matrix.displayString(charValue);
+    //matrix.displayString(charValue);
+	matrix << charValue;
 
     return 0;
 }

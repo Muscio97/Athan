@@ -90,4 +90,6 @@ public:
      * \param[in] stringLength  Size of text to display on led matrices.
      */
     void render(uint64_t renderInput, const int stringLength);
+	
+	uint8_t mirroruint8 (uint8_t b);
 };

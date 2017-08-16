@@ -14,8 +14,12 @@ Display & Display::operator<< (const char *lhs)
 	return *this;
 }
 
+
+
+
 void Display::displayString(const char *inputString) {
     size_t stringLength = strlen(inputString) + numberOfUnusedMatrices;
+	//size_t stringLength = strlen(inputString);
     MatrixDisplayParser display(spiBus, chipSelect, numberOfMatrices, numberOfRows);
     display.settings(settings);
 
@@ -23,6 +27,7 @@ void Display::displayString(const char *inputString) {
 		display.render(nop, stringLength);
     }
 
+	// stringLength - numberOfUnusedMatrices
     for (size_t counter = 0; counter < stringLength - numberOfUnusedMatrices; counter++) {
         switch (inputString[counter]) {
             case 'A' : display.render(A, stringLength); break;            case 'a' : display.render(a, stringLength); break;
