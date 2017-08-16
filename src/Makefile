@@ -12,7 +12,7 @@
 SOURCES := command.cpp display.cpp
 
 # header files in this project
-HEADERS := command.hpp display.hpp hwlib-due-spi.hpp
+HEADERS := command.hpp display.hpp hwlib-due-spi.hpp mem.hpp
 
 # other places to look for files for this project
 SEARCH  := 
