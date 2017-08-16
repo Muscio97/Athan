@@ -1,0 +1,8 @@
+.codelite
+.idea
+src/.idea
+__codelite.workspace
+Makefile.due
+*.o
+*.elf
+*.ld
