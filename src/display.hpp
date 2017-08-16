@@ -49,5 +49,7 @@ public:
      * \param[in] inputString that will be displayed on the led matrix.
      */
     void displayString(const char *inputString);
+	
+	Display & operator<< (const char *lhs);
 };
 

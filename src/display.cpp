@@ -8,6 +8,12 @@
 #include "mem.hpp"
 #include "display.hpp"
 
+Display & Display::operator<< (const char *lhs)
+{
+	displayString(lhs);
+	return *this;
+}
+
 void Display::displayString(const char *inputString) {
     size_t stringLength = strlen(inputString) + numberOfUnusedMatrices;
     MatrixDisplayParser display(spiBus, chipSelect, numberOfMatrices, numberOfRows);
