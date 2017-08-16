@@ -7,10 +7,10 @@
  */
 #pragma once
 
-#include "hwlib.hpp"
+#include <hwlib.hpp>
 #include "command.hpp"
 
-class Setup {
+class Display {
 private:
 
     /// Spi pins.
@@ -34,7 +34,7 @@ public:
     *                                   So the display won't display random stuff because of current leaking.
     * \param numberOfMatrices           Is the number of matrices you have hooked up.
     */
-    Setup(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfUnusedMatrices, int numberOfMatrices):
+    Display(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfUnusedMatrices, int numberOfMatrices):
             spiBus(spiBus),
             chipSelect(chipSelect),
             numberOfUnusedMatrices(numberOfUnusedMatrices),
