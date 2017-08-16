@@ -2,7 +2,10 @@
 .idea
 src/.idea
 __codelite.workspace
+src/_codelite.project
 Makefile.due
 *.o
 *.elf
 *.ld
+*.bin
+*.map
