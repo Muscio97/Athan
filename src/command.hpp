@@ -29,13 +29,19 @@ private:
     /// Represents the size of a matrix and is used to prevent no junk data is added to them.
     int numberOfCommands = 5;
 
-    uint8_t temp = 0;
+
+    uint64_t shiftData[384] = {0}; 
+    uint8_t toBe[8];
+    int segmentSelecter = 0;       
+    int listCounter = 0;
+    int delay = 150;
+    int rowToShift = 1;
     /**
     * \brief Matrices used in .cc names represents their functionality.
      *
      * The size of the matrices and arrays support up to 20 characters.
     */
-    uint8_t processedCommands[20];
+    uint8_t processedCommands[32];
     uint8_t commands[1000];
     /**
      * \brief Allows commands to be send via Hwlib SPI to the led matrix.
@@ -90,6 +96,10 @@ public:
      * \param[in] stringLength  Size of text to display on led matrices.
      */
     void render(uint64_t renderInput, const int stringLength);
-	
+    
+	void shift(uint8_t *data, int rowsToShift);
+    
+    void commandShifter(uint8_t *commands, int rowsToShift);
+        
 	uint8_t mirroruint8 (uint8_t b);
 };
