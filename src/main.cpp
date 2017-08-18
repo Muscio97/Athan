@@ -26,3 +26,25 @@ int main() {
     hwlib::cout << "\n\nThe program finished in " << (hwlib::now_us() - now) << "us";
     return 0;
 }
+
+/**if (effect == DISPLAY_ANIM_SHIFT)
+{
+	
+}
+
+switch(effect)
+{
+	case DISPLAY_ANIM_SHIFT_L:
+		// Actions to take for lefting shifting
+		break;
+	case DISPLAY_ANIM_SHIFT_R;
+		// Actions to take for right shiftling
+		break;
+}\
+
+matrix.render("Hello world", 3);
+
+enum {
+	DISPLAY_ANIM_SHIFT,
+}
+**/
