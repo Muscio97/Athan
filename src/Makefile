@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := command.cpp display.cpp
+SOURCES := command.cpp display.cpp Displayable.cpp
 
 # header files in this project
-HEADERS := command.hpp display.hpp hwlib-due-spi.hpp mem.hpp
+HEADERS := command.hpp display.hpp hwlib-due-spi.hpp mem.hpp Displayable.hpp
 
 # other places to look for files for this project
 SEARCH  := 
