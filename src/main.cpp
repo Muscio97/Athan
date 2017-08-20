@@ -1,5 +1,6 @@
 #include "hwlib.hpp"
 #include "display.hpp"
+#include "Displayable.hpp"
 
 const int numberOfUnusedMatrices = 0;
 const int numberOfMatrices = 4;
@@ -61,11 +62,39 @@ int main() {
     hwlib::spi_bus_bit_banged_sclk_mosi_miso spi(clock, digitalIn, hwlib::pin_in_dummy);
 
     Display matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
+	Displayable dAble;
+	
+	const char charValue[5]= "5555";   
+	
+	dAble.append(charValue);
+	
 
-    const char charValue[5]= "5555";    
-    matrix.displayString(charValue);
-	matrix << charValue;
+    //const char charValue[5]= "5555";    
+    //matrix.displayString(charValue);
+	//matrix << charValue;
     
     hwlib::cout << "\n\nThe program finished in " << (hwlib::now_us() - now) << "us";
     return 0;
 }
+
+/**if (effect == DISPLAY_ANIM_SHIFT)
+{
+	
+}
+
+switch(effect)
+{
+	case DISPLAY_ANIM_SHIFT_L:
+		// Actions to take for lefting shifting
+		break;
+	case DISPLAY_ANIM_SHIFT_R;
+		// Actions to take for right shiftling
+		break;
+}\
+
+matrix.render("Hello world", 3);
+
+enum {
+	DISPLAY_ANIM_SHIFT,
+}
+**/
