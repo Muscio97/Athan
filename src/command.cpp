@@ -41,6 +41,7 @@ void MatrixDisplayParser::settings(const uint8_t (*settingsList)[2]) {
 
 void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift){
     uint64_t shiftData[384] = {0};  // need to go to hpp
+    uint8_t storage = 0x00;
     int segmentSelecter = 0;        // need to go to hpp
     int sizeOfData = (sizeof(data)/sizeof(*data)); 
     for (int i = 0; i < sizeOfData; i++){
@@ -51,9 +52,15 @@ void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift){
         segmentSelecter = segmentSelecter + rowsToShift;
     }
     segmentSelecter = 0;
-    for (int i = 1; i < sizeOfData; i++){
+    for (int i = 1; i < sizeOfData+1; i++){
         for (int j = 0; j < rowsToShift; j++){
-            data[i] = data[i]  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
+            if(i < sizeOfData){
+                data[i] = data[i]  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
+                data[i-1] = data[i];
+            }else{
+                storage = storage  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
+                data[i-1] = storage;
+            }
         }
         segmentSelecter = segmentSelecter + rowsToShift;
     }
@@ -71,8 +78,8 @@ void MatrixDisplayParser::commandShifter(uint8_t *commands, int rowsToShift){
                 commands[(currentRow + (currentMatrix*numberOfRows))] = toBe[currentMatrix];
             }
         }
-        hwlib::wait_ms(150);
         spiParseAndSend(commands);
+        hwlib::wait_ms(2500);
     }
 }
 
