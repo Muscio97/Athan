@@ -9,7 +9,7 @@
 #pragma once
 
 #include "hwlib.hpp"
-
+using namespace hwlib;
 
 class MatrixDisplayParser {
 private:
@@ -17,8 +17,8 @@ private:
     /**
      * SPI pins.
      */
-    hwlib::spi_bus &spiBus;
-    hwlib::pin_out &chipSelect;
+    spi_bus &spiBus;
+    pin_out &chipSelect;
 
    /// Amount of matrices used to display text.
     int numberOfMatrices;
@@ -39,10 +39,10 @@ private:
     /**
     * \brief Matrices used in .cc names represents their functionality.
      *
-     * The size of the matrices and arrays support up to 20 characters.
+     * The size of the matrices and arrays support up to 255 characters.
     */
-    uint8_t processedCommands[32];
-    uint8_t commands[1000];
+    uint8_t processedCommands[256];
+    uint8_t commands[1048];
     /**
      * \brief Allows commands to be send via Hwlib SPI to the led matrix.
      *
@@ -56,15 +56,13 @@ private:
      * \param[in] dataToSend A pointer to a location in an array that contains an 8x2 matrix.
      */
     
-    void spiParseAndSend(const uint8_t (*dataToSend));
-    /**
-     * \brief This function converts a 8x8 matrix to a 8x2 matrix.
-     *
-     * This conversion makes the datsa use able for commander.
-     * \param[in] renderInput       Accept 8x8 matrix.
-     * \param[out] converterOutput  8x2 matrix.
-     */
-    //void converter(const uint8_t (*renderInput)[8], uint8_t (*converterOutput));
+    void commandSender(const uint8_t (*dataToSend));
+
+    void shift(uint8_t *data, int rowsToShift, int mode);
+    
+    void commandShifter(uint8_t *commands, int delay, int rowsToShift, int mode);
+        
+    uint8_t mirroruint8 (uint8_t b);
 
 public:
     /**
@@ -77,7 +75,7 @@ public:
      * \param numberOfRows      Contains the amount of rows that the matrices have.
      */
 
-    MatrixDisplayParser(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfMatrices, int numberOfRows) :
+    MatrixDisplayParser(spi_bus &spiBus, pin_out &chipSelect, int numberOfMatrices, int numberOfRows) :
             spiBus(spiBus), chipSelect(chipSelect), numberOfMatrices(numberOfMatrices), numberOfRows(numberOfRows){};
 
     /**
@@ -93,13 +91,6 @@ public:
      * \brief This function accepts a 8x8 matrix and displays it on the display matrices using commander and converter.
      *
      * \param[in] renderInput   Accepts 8x8 matrix.
-     * \param[in] stringLength  Size of text to display on led matrices.
      */
-    void render(uint64_t renderInput, const int stringLength);
-    
-	void shift(uint8_t *data, int rowsToShift);
-    
-    void commandShifter(uint8_t *commands, int rowsToShift);
-        
-	uint8_t mirroruint8 (uint8_t b);
+    void render(uint64_t renderInput);
 };

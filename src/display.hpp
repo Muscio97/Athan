@@ -18,7 +18,6 @@ private:
     hwlib::pin_out &chipSelect;
 
     /// Settings.
-    int numberOfUnusedMatrices;
     int numberOfMatrices;
     const int numberOfRows = 8;
 
@@ -34,10 +33,9 @@ public:
     *                                   So the display won't display random stuff because of current leaking.
     * \param numberOfMatrices           Is the number of matrices you have hooked up.
     */
-    Display(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfUnusedMatrices, int numberOfMatrices):
+    Display(hwlib::spi_bus &spiBus, hwlib::pin_out &chipSelect, int numberOfMatrices):
             spiBus(spiBus),
             chipSelect(chipSelect),
-            numberOfUnusedMatrices(numberOfUnusedMatrices),
             numberOfMatrices(numberOfMatrices)
     {}
 

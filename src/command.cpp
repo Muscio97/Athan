@@ -4,10 +4,9 @@
  * \copyright Copyright (c) 2017, The R2D2 Team
  * \license   See LICENSE
  */
-
-
-
 #include "command.hpp"
+
+using namespace hwlib;
 
 uint8_t MatrixDisplayParser::mirroruint8 (uint8_t b)
 {
@@ -17,7 +16,7 @@ uint8_t MatrixDisplayParser::mirroruint8 (uint8_t b)
 	return b;
 }
 
-void MatrixDisplayParser::spiParseAndSend(const uint8_t *dataToSend){
+void MatrixDisplayParser::commandSender(const uint8_t *dataToSend){
     for (int currentRow = 0; currentRow < numberOfRows; currentRow++){
         int l = 0;
         for (int currentMatrix = 0; currentMatrix < numberOfMatrices; currentMatrix++){
@@ -39,10 +38,9 @@ void MatrixDisplayParser::settings(const uint8_t (*settingsList)[2]) {
     }
 }
 
-void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift){
-    uint64_t shiftData[384] = {0};  // need to go to hpp
-    uint8_t storage = 0x00;
-    int segmentSelecter = 0;        // need to go to hpp
+void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift, int mode){
+    uint64_t shiftData[384] = {0};
+    int segmentSelecter = 0;
     int sizeOfData = (sizeof(data)/sizeof(*data)); 
     for (int i = 0; i < sizeOfData; i++){
         for (int j = 0; j < rowsToShift; j++){
@@ -54,42 +52,59 @@ void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift){
     segmentSelecter = 0;
     for (int i = 1; i < sizeOfData+1; i++){
         for (int j = 0; j < rowsToShift; j++){
-            if(i < sizeOfData){
-                data[i] = data[i]  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
-                data[i-1] = data[i];
+            if(i == sizeOfData && mode == 1){
+                data[0] = data[0]  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
             }else{
-                storage = storage  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
-                data[i-1] = storage;
+                data[i] = data[i]  | shiftData[(((rowsToShift-1) - j)+segmentSelecter)] << (7 - j);
             }
         }
         segmentSelecter = segmentSelecter + rowsToShift;
+        //cout << hex << (int)data[i] << endl;
     }
 }
 
-void MatrixDisplayParser::commandShifter(uint8_t *commands, int rowsToShift){
+void MatrixDisplayParser::commandShifter(uint8_t *commands, int delay = 40, int rowsToShift = 1, int mode = 0){
     uint8_t toBe[8];
-    for(int i = 0; i < (numberOfRows*numberOfMatrices); i++){
+    if (mode == 0){
+        commandSender(commands);
+    }
+    for (int i = 0; i < (int)(sizeof(toBe)/sizeof(*toBe)); i++){
         for (int currentRow = 0; currentRow < numberOfRows; currentRow++){
             for (int currentMatrix = 0; currentMatrix < numberOfMatrices; currentMatrix++){
                 toBe[currentMatrix] = {commands[(currentRow + (currentMatrix*numberOfRows))]};
             }
-            shift(toBe, rowsToShift);
+            shift(toBe, rowsToShift, mode);
             for (int currentMatrix = 0; currentMatrix < numberOfMatrices; currentMatrix++){
                 commands[(currentRow + (currentMatrix*numberOfRows))] = toBe[currentMatrix];
             }
         }
-        spiParseAndSend(commands);
-        hwlib::wait_ms(2500);
+        wait_ms(delay*numberOfMatrices);
+        commandSender(commands);
     }
 }
 
-void MatrixDisplayParser::render(uint64_t renderInput, const int stringLength) {
+void MatrixDisplayParser::render(uint64_t renderInput) {
     static int listCounter = 0;
     for (int i = 0; i < numberOfRows; i++) {
         commands[listCounter++] = mirroruint8(renderInput & 0xFF);
         renderInput >>= 8;
     }
-    if (listCounter == (8*stringLength)) {
-        commandShifter(commands, 1);
+    if (listCounter == (8*numberOfMatrices)) {
+        int cycles = 69;
+        int delay = 50;
+        int rowsToShift = 1;
+        int mode = 1;
+        int effect = 2;
+        switch(effect){
+            case 0: // normal 
+                commandSender(commands);
+                break;
+            case 1: // shift out right
+                commandShifter(commands, delay, rowsToShift); 
+            case 2 :// shift wrap right
+                for(int i = 0; i < cycles; i++){
+                    commandShifter(commands, delay, rowsToShift, mode);
+                }; break;
+        }
     }
 }
