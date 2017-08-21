@@ -9,6 +9,8 @@
 #pragma once
 
 #include "hwlib.hpp"
+#include "Displayable.hpp"
+
 using namespace hwlib;
 
 class MatrixDisplayParser {
@@ -28,7 +30,10 @@ private:
 
     /// Represents the size of a matrix and is used to prevent no junk data is added to them.
     int numberOfCommands = 5;
-
+	
+	//effectType dEffectType = effectType::EFFECT_NONE;
+	displayEffect dEffect;
+	
 
     uint64_t shiftData[384] = {0}; 
     uint8_t toBe[8];
@@ -93,4 +98,7 @@ public:
      * \param[in] renderInput   Accepts 8x8 matrix.
      */
     void render(uint64_t renderInput);
+        
+    void setEffect(displayEffect effect);
+        
 };

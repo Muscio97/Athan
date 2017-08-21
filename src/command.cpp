@@ -64,11 +64,11 @@ void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift, int mode){
 }
 
 void MatrixDisplayParser::commandShifter(uint8_t *commands, int delay = 40, int rowsToShift = 1, int mode = 0){
-    uint8_t toBe[8];
+    uint8_t toBe[32];
     if (mode == 0){
         commandSender(commands);
     }
-    for (int i = 0; i < (int)(sizeof(toBe)/sizeof(*toBe)); i++){
+    for (int i = 0; i < ((int)(sizeof(toBe)/sizeof(*toBe))*numberOfMatrices)/rowsToShift; i++){
         for (int currentRow = 0; currentRow < numberOfRows; currentRow++){
             for (int currentMatrix = 0; currentMatrix < numberOfMatrices; currentMatrix++){
                 toBe[currentMatrix] = {commands[(currentRow + (currentMatrix*numberOfRows))]};
@@ -78,7 +78,7 @@ void MatrixDisplayParser::commandShifter(uint8_t *commands, int delay = 40, int 
                 commands[(currentRow + (currentMatrix*numberOfRows))] = toBe[currentMatrix];
             }
         }
-        wait_ms(delay*numberOfMatrices);
+        wait_ms(delay*numberOfMatrices*rowsToShift);
         commandSender(commands);
     }
 }
@@ -89,22 +89,34 @@ void MatrixDisplayParser::render(uint64_t renderInput) {
         commands[listCounter++] = mirroruint8(renderInput & 0xFF);
         renderInput >>= 8;
     }
-    if (listCounter == (8*numberOfMatrices)) {
-        int cycles = 69;
-        int delay = 50;
-        int rowsToShift = 1;
-        int mode = 1;
-        int effect = 2;
-        switch(effect){
-            case 0: // normal 
+    if (listCounter == (8*12/*8*numberOfMatrices*/)) {
+        switch (dEffect.type)
+        {
+            case effectType::EFFECT_SHIFT_RIGHT:
+                commandShifter(commands, dEffect.delay, dEffect.steps);
+                break;
+            case effectType::EFFECT_SHIFT_LEFT:
+                commandShifter(commands, -1, dEffect.delay);
+                break;
+            case effectType::EFFECT_SHIFT_WRAP_RIGHT:
+                for(int i = 0; i < dEffect.cycles; i++){
+                    commandShifter(commands, dEffect.delay, dEffect.steps, 1);
+                }
+                break;
+            case effectType::EFFECT_FADING_IN:
+                break;
+            case effectType::EFFECT_FADING_OUT:
+                break;
+            case effectType::EFFECT_BLINK:
+                break;
+            default:
                 commandSender(commands);
                 break;
-            case 1: // shift out right
-                commandShifter(commands, delay, rowsToShift); 
-            case 2 :// shift wrap right
-                for(int i = 0; i < cycles; i++){
-                    commandShifter(commands, delay, rowsToShift, mode);
-                }; break;
         }
     }
+}
+
+void MatrixDisplayParser::setEffect(displayEffect effect)
+{
+	dEffect = effect;
 }

@@ -10,14 +10,28 @@
 
 Display & Display::operator<< (const char *lhs)
 {
-	displayString(lhs);
+	MatrixDisplayParser display(spiBus, chipSelect, numberOfMatrices, numberOfRows);
+	displayString(display, lhs);
 	return *this;
 }
 
+Display & Display::operator<< (Displayable &rhs)
+{
+	display(rhs);
+	
+	return *this;
+}
+void Display::display(Displayable &displayObject)
+{
+	MatrixDisplayParser display(spiBus, chipSelect, numberOfMatrices, numberOfRows);
+	
+	display.setEffect(displayObject.getEffect());
+	displayString(display, displayObject.getContent());
+}
 
-void Display::displayString(const char *inputString) {
+void Display::displayString(MatrixDisplayParser& display, const char *inputString) {
     size_t stringLength = strlen(inputString);
-    MatrixDisplayParser display(spiBus, chipSelect, numberOfMatrices, numberOfRows);
+    
     display.settings(settings);
     int numberOfUnusedMatrices = numberOfMatrices - stringLength;
     
