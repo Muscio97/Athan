@@ -16,4 +16,4 @@ An hobby bedroom display using MAX2719 matrices.
 4. Enjoy!
 
 ## Credits
-This project is developed by Mike Hilhorst and Wiebe van Breukelen as an hobby project. Code may not be yet up to code standards.
+This project is developed by [Mike Hilhorst](https://github.com/Muscio97) and [Wiebe van Breukelen](https://github.com/wvanbreukelen) as an hobby project. Code may not be yet up to code standards.
