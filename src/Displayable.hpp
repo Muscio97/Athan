@@ -2,42 +2,31 @@
 
 #include <hwlib.hpp>
 
+/// @wvanbreukelen Subject to changes.
+enum class effectType {
+	EFFECT_NONE,
+	EFFECT_SHIFT_LEFT,
+	EFFECT_SHIFT_RIGHT,
+	EFFECT_BLINK,
+	EFFECT_FADING_IN,
+	EFFECT_FADING_OUT 
+};
+
+/// Properties of an effect.
+struct displayEffect {
+	effectType type;
+	uint16_t delay;
+};
+
 class Displayable
 {
-private:
-	/// Displayable content holden by the ADT.
-	char content[255];
-	
-	/// Current position index in content.
-	uint8_t index;
-	
-	/// Display brightness, may be moved @wvanbreukelen
-	uint8_t brightness;
-	
-	/// @wvanbreukelen Subject to changes.
-	typedef enum {
-		EFFECT_NONE,
-		EFFECT_SHIFT_LEFT,
-		EFFECT_SHIFT_RIGHT,
-		EFFECT_BLINK,
-		EFFECT_FADING_IN,
-		EFFECT_FADING_OUT 
-	} effectType;
-	
-	/// Properties of an effect.
-	struct displayEffect {
-		effectType type;
-		uint16_t delay;
-	};
-	
-	displayEffect effect;
-	
 public:
 	Displayable():
 		content{0},
 		index(0),
 		brightness(0x04)
 	{};
+
 	
 	/**
 	 * @brief Append string into displayable content.
@@ -50,7 +39,7 @@ public:
 	 * @brief Append string into displayable content.
 	 * @param str String to append.
 	 */
-	void append(const char* str);
+	bool append(const char* str);
 	
 	/**
 	 * @brief Get length of displayable content.
@@ -77,6 +66,10 @@ public:
 	 */
 	displayEffect getEffect();
 	
+	effectType getEffectType();
+	
+	uint16_t getEffectDelay();
+	
 	/**
 	 * @brief Disable effect.
 	 * Changes effective effect to EFFECT_NONE.
@@ -99,4 +92,16 @@ public:
 	 * @brief Clear ADT
 	 */
 	void clear();
+	
+private:
+	/// Displayable content holden by the ADT.
+	char content[255];
+	
+	/// Current position index in content.
+	uint8_t index;
+	
+	/// Display brightness, may be moved @wvanbreukelen
+	uint8_t brightness;
+	
+	displayEffect effect;
 };

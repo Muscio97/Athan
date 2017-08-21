@@ -8,7 +8,7 @@ const int numberOfMatrices = 4;
 
 
 int main() {
-    int rowsToShift = 4;
+    /**int rowsToShift = 4;
     uint8_t data[15] = {0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x99, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11};
     uint64_t shiftData[384] = {0};  // need to go to hpp
     //uint8_t storage = 0x00;
@@ -46,7 +46,7 @@ int main() {
         }
         hwlib::cout << "===========\n";
     }
-    for(;;){}
+    for(;;){}**/
 
     
     uint64_t now = hwlib::now_us();
@@ -64,14 +64,11 @@ int main() {
     Display matrix(spi, chipSelect, numberOfUnusedMatrices, numberOfMatrices);
 	Displayable dAble;
 	
-	const char charValue[5]= "5555";   
+	const char charValue[5] = "1234";   
 	
 	dAble.append(charValue);
-	
-
-    //const char charValue[5]= "5555";    
-    //matrix.displayString(charValue);
-	//matrix << charValue;
+	dAble.enableEffect(effectType::EFFECT_NONE);
+	matrix.display(dAble);
     
     hwlib::cout << "\n\nThe program finished in " << (hwlib::now_us() - now) << "us";
     return 0;

@@ -66,7 +66,7 @@ void MatrixDisplayParser::shift(uint8_t *data, int rowsToShift){
     }
 }
 
-void MatrixDisplayParser::commandShifter(uint8_t *commands, int rowsToShift){
+void MatrixDisplayParser::commandShifter(uint8_t *commands, int rowsToShift, const uint16_t delay){
     uint8_t toBe[8];
     for(int i = 0; i < (numberOfRows*numberOfMatrices); i++){
         for (int currentRow = 0; currentRow < numberOfRows; currentRow++){
@@ -79,7 +79,7 @@ void MatrixDisplayParser::commandShifter(uint8_t *commands, int rowsToShift){
             }
         }
         spiParseAndSend(commands);
-        hwlib::wait_ms(2500);
+        hwlib::wait_ms(delay);
     }
 }
 
@@ -90,6 +90,28 @@ void MatrixDisplayParser::render(uint64_t renderInput, const int stringLength) {
         renderInput >>= 8;
     }
     if (listCounter == (8*stringLength)) {
-        commandShifter(commands, 1);
+		switch (dEffect.type)
+		{
+			case effectType::EFFECT_SHIFT_RIGHT:
+				commandShifter(commands, 1, dEffect.delay);
+				break;
+			case effectType::EFFECT_SHIFT_LEFT:
+				commandShifter(commands, -1, dEffect.delay);
+				break;
+			case effectType::EFFECT_FADING_IN:
+				break;
+			case effectType::EFFECT_FADING_OUT:
+				break;
+			case effectType::EFFECT_BLINK:
+				break;
+			default:
+				spiParseAndSend(commands);
+				break;
+		}
     }
+}
+
+void MatrixDisplayParser::setEffect(displayEffect effect)
+{
+	dEffect = effect;
 }

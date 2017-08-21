@@ -9,6 +9,7 @@
 
 #include <hwlib.hpp>
 #include "command.hpp"
+#include "Displayable.hpp"
 
 class Display {
 private:
@@ -40,6 +41,8 @@ public:
             numberOfUnusedMatrices(numberOfUnusedMatrices),
             numberOfMatrices(numberOfMatrices)
     {}
+	
+	void display(Displayable &d);
 
     /**
      * \brief This function takes a string and displays it on the matrices.
@@ -48,9 +51,10 @@ public:
      * The number of displayed chars on the this display is limited by the number of matrices
      * \param[in] inputString that will be displayed on the led matrix.
      */
-    void displayString(const char *inputString);
+    void displayString(MatrixDisplayParser& display, const char *inputString);
 	
 	Display & operator<< (const char *lhs);
+	Display & operator<< (Displayable &rhs);
 
 };
 

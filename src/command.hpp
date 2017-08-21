@@ -9,6 +9,7 @@
 #pragma once
 
 #include "hwlib.hpp"
+#include "Displayable.hpp"
 
 
 class MatrixDisplayParser {
@@ -28,7 +29,10 @@ private:
 
     /// Represents the size of a matrix and is used to prevent no junk data is added to them.
     int numberOfCommands = 5;
-
+	
+	//effectType dEffectType = effectType::EFFECT_NONE;
+	displayEffect dEffect;
+	
 
     uint64_t shiftData[384] = {0}; 
     uint8_t toBe[8];
@@ -99,7 +103,9 @@ public:
     
 	void shift(uint8_t *data, int rowsToShift);
     
-    void commandShifter(uint8_t *commands, int rowsToShift);
+    void commandShifter(uint8_t *commands, int rowsToShift, const uint16_t delay);
+	
+	void setEffect(displayEffect effect);
         
 	uint8_t mirroruint8 (uint8_t b);
 };
