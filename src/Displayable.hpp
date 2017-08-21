@@ -33,7 +33,6 @@ public:
 	 * @param str String to append.
 	 */
 	Displayable & operator<< (const char* str);
-	char* operator>> (char* dump);
 	
 	/**
 	 * @brief Append string into displayable content.

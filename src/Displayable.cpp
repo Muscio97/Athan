@@ -25,18 +25,6 @@ Displayable & Displayable::operator<< (const char* str)
 	return *this;
 }
 
-char* Displayable::operator>> (char* dump)
-{
-	size_t size = sizeof(*dump);
-	
-	for (unsigned int pos = 0; pos < size; pos++)
-	{
-		
-	}
-	
-	return dump;
-}
-
 uint8_t Displayable::getLength()
 {
 	return index;
